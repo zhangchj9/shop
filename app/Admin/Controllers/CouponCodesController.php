@@ -65,16 +65,31 @@ class CouponCodesController extends Controller
         return Admin::grid(CouponCode::class, function (Grid $grid) {
             $grid->model()->orderBy('created_at', 'desc');
             $grid->id('ID')->sortable();
-            $grid->name('名称');
+            $grid->name('名称')->sortable();
+            $grid->admin_id('管理员(生成)')->sortable();
             $grid->code('优惠码');
             $grid->description('描述');
             $grid->column('usage', '用量')->display(function ($value) {
                 return "{$this->used} / {$this->total}";
-            });
+            })->sortable();
             $grid->enabled('是否启用')->display(function ($value) {
                 return $value ? '是' : '否';
+            })->sortable();
+            $grid->not_before('启用时间')->sortable();
+            $grid->not_after('失效时间')->sortable();
+            $grid->created_at('创建时间')->sortable();
+
+            $grid->filter(function($filter){
+                // 移除默认的ID筛选器
+                $filter->disableIdFilter();
+                // $filter->like('name', '名称'); //用 名称 作为条件模糊查
+                // Add a column filter
+                $filter->where(function ($query) {
+                    $query->where('id', 'like', "%{$this->input}%")
+                        ->orWhere('name', 'like', "%{$this->input}%");
+                }, '使用Id或Name进行筛选'); 
+                        
             });
-            $grid->created_at('创建时间');
         });
     }
 
@@ -108,14 +123,15 @@ class CouponCodesController extends Controller
             });
             $form->text('total', '总量')->rules('required|numeric|min:0');
             $form->text('min_amount', '最低金额')->rules('required|numeric|min:0');
-            $form->datetime('not_before', '开始时间');
-            $form->datetime('not_after', '结束时间');
+            $form->datetime('not_before', '启用时间');
+            $form->datetime('not_after', '失效时间');
             $form->radio('enabled', '启用')->options(['1' => '是', '0' => '否']);
 
             $form->saving(function (Form $form) {
                 if (!$form->code) {
                     $form->code = CouponCode::findAvailableCode();
                 }
+                $form->model()->admin_id = Admin::user()->id; // 自动为该字段附上对应管理员的身份id
             });
         });
     }

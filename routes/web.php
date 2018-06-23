@@ -1,7 +1,12 @@
 <?php
 
+// Route::get('/', function () {
+//     // return view('welcome');
+//     echo "test"; 
+// });
+
 Route::redirect('/', '/products')->name('root');
-Route::get('products', 'ProductsController@index')->name('products.index');
+Route::get('/products', 'ProductsController@index')->name('products.index');
 
 Auth::routes();
 

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','注冊')
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -15,7 +17,7 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>用戶長度要求
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">

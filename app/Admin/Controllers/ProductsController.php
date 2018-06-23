@@ -64,14 +64,14 @@ class ProductsController extends Controller
     {
         return Admin::grid(Product::class, function (Grid $grid) {
             $grid->id('ID')->sortable();
-            $grid->title('商品名称');
+            $grid->title('商品名称')->sortable();
             $grid->on_sale('已上架')->display(function ($value) {
                 return $value ? '是' : '否';
             });
-            $grid->price('价格');
-            $grid->rating('评分');
-            $grid->sold_count('销量');
-            $grid->review_count('评论数');
+            $grid->price('价格')->sortable();
+            $grid->rating('评分')->sortable();
+            $grid->sold_count('销量')->sortable();
+            $grid->review_count('评论数')->sortable();
 
             $grid->actions(function ($actions) {
                 $actions->disableDelete();
@@ -105,7 +105,7 @@ class ProductsController extends Controller
             });
             // 定义事件回调，当模型即将保存时会触发这个回调
             $form->saving(function (Form $form) {
-                $form->model()->price = collect($form->skus)->min('price');
+                $form->model()->price = collect($form->input('skus'))->where(Form::REMOVE_FLAG_NAME, 0)->min('price');
             });
         });
     }

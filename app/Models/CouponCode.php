@@ -20,6 +20,7 @@ class CouponCode extends Model
 
     protected $fillable = [
         'name',
+        'admin_id',
         'code',
         'type',
         'value',
@@ -37,6 +38,12 @@ class CouponCode extends Model
     protected $dates = ['not_before', 'not_after'];
 
     protected $appends = ['description'];
+
+    // // 在 CouponCodes模型中新增与 admin_id 的关联关系
+    // public function admin_id()
+    // {
+    //     return $this->belongsTo(Administrator::class);   //参看admin.php 参考于：https://laravel-china.org/courses/laravel-shop/1681/management-backstage-coupon-management
+    // }
 
     public function getDescriptionAttribute()
     {
