@@ -7,6 +7,7 @@ use App\Exceptions\InvalidRequestException;
 use App\Http\Requests\OrderRequest;
 use App\Models\UserAddress;
 use App\Models\Order;
+use App\Models\Product; //引入products为了显示
 use Illuminate\Http\Request;
 use App\Services\OrderService;
 use App\Events\OrderReviewd;
@@ -24,8 +25,8 @@ class OrdersController extends Controller
             ->where('user_id', $request->user()->id)
             ->orderBy('created_at', 'desc')
             ->paginate();
-
-        return view('orders.index', ['orders' => $orders]);
+        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
+        return view('orders.index', ['orders' => $orders,'addresses'=>$addresses]);
     }
 
     public function show(Order $order, Request $request)

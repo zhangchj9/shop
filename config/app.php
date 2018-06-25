@@ -142,6 +142,9 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        
+        Mews\Captcha\CaptchaServiceProvider::class,
+
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -168,6 +171,9 @@ return [
         /*
          * Package Service Providers...
          */
+        //验证码
+        //Germey\Geetest\GeetestServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -177,6 +183,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+
 
     ],
 
@@ -192,6 +200,8 @@ return [
     */
 
     'aliases' => [
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
+
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -226,6 +236,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        //'Geetest' => Germey\Geetest\Geetest::class,
 
     ],
 

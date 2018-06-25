@@ -72,6 +72,7 @@ return [
 
         'directory' => [
             'image' => 'images',
+            // 'image' => 'app/public/images',
             'file'  => 'files',
         ],
     ],

@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+{{--<div class="container">--}}
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-
+        <div class="centered-title text-center mb-40">
+            <h2>Sign <span class="light-font">Up</span></h2>
+            <div class="clear"></div>
+            <em>register and get your account</em>
+        </div>
+        <div class="clear"></div>
+            <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">

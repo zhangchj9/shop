@@ -19,10 +19,25 @@ class Product extends Model
 
     public function getImageUrlAttribute()
     {
+        $str = $this->attributes['image'];
+        $str = explode(';', $str);
         // 如果 image 字段本身就已经是完整的 url 就直接返回
-        if (Str::startsWith($this->attributes['image'], ['http://', 'https://'])) {
-            return $this->attributes['image'];
-        }
-        return \Storage::disk('public')->url($this->attributes['image']);
+        if (Str::startsWith($str[0], ['http://', 'https://'])) {                    
+            return $str[0];
+        }        
+        $str = \Storage::disk('local')->url($str[0]);        
+        return $str;
+    }
+
+    public function getImageUrlAiAttribute()
+    {
+        $str = $this->attributes['image'];
+        $str = explode(';', $str);
+        // 如果 image 字段本身就已经是完整的 url 就直接返回
+        if (Str::startsWith($str[1], ['http://', 'https://'])) {                    
+            return $str[1];
+        }        
+        $str = \Storage::disk('local')->url($str[1]);        
+        return $str;
     }
 }

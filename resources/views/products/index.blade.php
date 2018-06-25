@@ -14,12 +14,13 @@
 </div>
 <!-- 面包屑导航 end -->
 <!-- shop-area start -->
+<form action="{{ route('products.index') }}" class="form-inline search-form">
 <div class="shop-area">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-4">
         <div class="column">
-          <h2 class="title-block">分类</h2>
+          <h2 class="title-block">分类<button name="classify" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></h2>
           <div class="sidebar-widget">
             <h3 class="sidebar-title">品牌</h3>
             <ul class="sidebar-menu">
@@ -28,28 +29,57 @@
             </ul>
           </div>
           <div class="sidebar-widget">
+            
             <h3 class="sidebar-title">运行内存</h3>
-            <ul class="sidebar-menu">
-              <li><a href="#">2GB以下 </a></li>
-              <li><a href="#">2GB </a></li>
-              <li><a href="#">3GB </a></li>
-              <li><a href="#">4GB </a></li>
-              <li><a href="#">6GB </a></li>
-              <li><a href="#">8GB </a></li>
-            </ul>
+            <!-- <div class="selector-field"> -->
+            <select name="cla">
+                    <option value="">全部</option>
+                    <option value="2GB以下">2GB以下</option>
+                    <option value="2GB">2GB</option>
+                    <option value="3GB">3GB</option>
+                    <option value="4GB">4GB</option>
+                    <option value="6GB">6GB</option>
+                    <option value="8GB">8GB</option>
+                  </select>
+                <!-- </div> -->
+            <!-- <ul class="sidebar-menu">
+              <li>所有<button name="cla" value="" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>2GB以下<button name="cla" value="2GB以下" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>2GB<button name="cla" value="2GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>3GB<button name="cla" value="3GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>4GB<button name="cla" value="4GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>6GB<button name="cla" value="6GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>8GB<button name="cla" value="8GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>            
+            </ul> -->
+          
           </div>
           <div class="sidebar-widget">
+            
             <h3 class="sidebar-title">机身内存</h3>
-            <ul class="sidebar-menu">
-              <li><a href="#">8GB以下 </a></li>
-              <li><a href="#">16GB </a></li>
-              <li><a href="#">32GB </a></li>
-              <li><a href="#">64GB </a></li>
-              <li><a href="#">128GB </a></li>
-              <li><a href="#">256GB </a></li>
-              <li><a href="#">512GB及以上 </a></li>
-            </ul>
+            <!-- <div class="selector-field"> -->
+            <select name="abc">
+                    <option value="">全部</option>
+                    <option value="8GB以下">8GB以下</option>
+                    <option value="16GB">16GB</option>
+                    <option value="32GB">32GB</option>
+                    <option value="64GB">64GB</option>
+                    <option value="128GB">128GB</option>
+                    <option value="256GB">256GB</option>
+                    <option value="512GB">512GB及以上</option>
+                  </select>
+                <!-- </div> -->
+            <!-- <ul class="sidebar-menu">
+              <li>所有<button name="cla" value="" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>2GB以下<button name="cla" value="2GB以下" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>2GB<button name="cla" value="2GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>3GB<button name="cla" value="3GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>4GB<button name="cla" value="4GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>6GB<button name="cla" value="6GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
+              <li>8GB<button name="cla" value="8GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>            
+            </ul> -->
+          
           </div>
+          
           <div class="sidebar-widget">
             <h3 class="sidebar-title">价格</h3>
             <div class="price-filter">
@@ -84,7 +114,7 @@
           <div class="sidebar-widget">
             <h3 class="sidebar-title">屏幕尺寸</h3>
             <ul class="sidebar-menu">
-              <li><a href="#">8GB以下 </a></li>
+              <li><a href="products/favorites">8GB以下 </a></li>
               <li><a href="#">16GB </a></li>
               <li><a href="#">32GB </a></li>
               <li><a href="#">64GB </a></li>
@@ -116,12 +146,7 @@
       <div class="col-md-9 col-sm-8">
         <h2 class="page-heading mt-40">
         <span class="cat-name">全部结果</span>
-        <?php
-        $counts = 0;
-        foreach($products as $product)
-        $counts += 1;
-        ?>
-        <span class="heading-counter">There are {{ $counts }} products.</span>
+        <span class="heading-counter">共有 {{ $counts }} 个结果.</span>
         </h2>
         <div class="shop-page-bar">
           <div>
@@ -129,7 +154,7 @@
               <!-- Nav tabs -->
               
               <div class="selector-field ml-20 hidden-xs">
-                <form action="{{ route('products.index') }}" class="form-inline search-form">
+                <!-- <form action="{{ route('products.index') }}" class="form-inline search-form"> -->
                   <label>排序</label>
                   <select name="order">
                     <option value="">排序方式</option>
@@ -150,7 +175,7 @@
                   </div>
                   <!-- </div>  -->
                   
-                </form>
+                <!-- </form> -->
               </div>
               
             </div>
@@ -164,7 +189,7 @@
                     <div class="product-wrapper mb-40">
                       <div class="product-img">
                         <a href="{{ route('products.show', ['product' => $product->id]) }}">
-                          <img src="{{ $product->image_url }}" alt="">
+                          <img src="{{$product->image_url}}" alt="">
                         </a>
                         <!-- <span class="new-label">New</span> -->
                         <!-- <div class="product-action">
@@ -211,6 +236,7 @@
     </div>
   </div>
 </div>
+</form>
 <!-- shop-area end -->
 <!-- brand-area start -->
 <!-- brand-area end -->
@@ -222,9 +248,22 @@ var filters = {!! json_encode($filters) !!};
 $(document).ready(function () {
 $('.search-form input[name=search]').val(filters.search);
 $('.search-form select[name=order]').val(filters.order);
+$('.search-form select[name=cla]').val(filters.cla);
+$('.search-form select[name=abc]').val(filters.abc);
 $('.search-form select[name=order]').on('change', function() {
 $('.search-form').submit();
 });
+// $('.search-form select[name=cla]').on('change', function() {
+// $('.search-form').submit();
+// });
+// })
+$('.search-form button[name=classify]').on('change', function() {
+$('.search-form').submit();
+});
 })
+
+// var str = $("#img2").attr("value");
+// document.getElementById("img1").src=str.split(';')[0];
+// document.getElementById("img3").href=str;
 </script>
 @endsection

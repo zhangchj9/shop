@@ -5,8 +5,12 @@
 //     echo "test"; 
 // });
 
-Route::redirect('/', '/products')->name('root');
+// Route::redirect('/', '/products')->name('root');
+Route::redirect('/', '/index');
+Route::get('/index', 'IndexController@index')->name('root');
 Route::get('/products', 'ProductsController@index')->name('products.index');
+//Route::get('auth/geetest', 'GetGeetestController@getGeetest');//验证码
+Route::get('auth/geetest','Auth\AuthController@getGeetest');
 
 Auth::routes();
 

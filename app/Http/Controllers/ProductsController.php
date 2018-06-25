@@ -5,18 +5,50 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\OrderItem;
+use DB;
 
 class ProductsController extends Controller
 {
     public function index(Request $request)
     {
         // 创建一个查询构造器
+        // $coun = Product::query()->count();
         $builder = Product::query()->where('on_sale', true);
         // 判断是否有提交 search 参数，如果有就赋值给 $search 变量
         // search 参数用来模糊搜索商品
-        if ($search = $request->input('search', '')) {
+        $cla = $request->input('cla');
+        $abc = $request->input('abc');
+        $search = $request->input('search', '');
+        
+        if ($search) {
             $like = '%'.$search.'%';
             // 模糊搜索商品标题、商品详情、SKU 标题、SKU描述
+            $builder->where(function ($query) use ($like) {
+                $query->where('title', 'like', $like)
+                    ->orWhere('description', 'like', $like)
+                    ->orWhereHas('skus', function ($query) use ($like) {
+                        $query->where('title', 'like', $like)
+                            ->orWhere('description', 'like', $like);
+                    });
+            });
+        }
+
+        if($cla) {
+            $like = '%'.$cla.'%';
+
+            $builder->where(function ($query) use ($like) {
+                $query->where('title', 'like', $like)
+                    ->orWhere('description', 'like', $like)
+                    ->orWhereHas('skus', function ($query) use ($like) {
+                        $query->where('title', 'like', $like)
+                            ->orWhere('description', 'like', $like);
+                    });
+            });
+        }
+
+        if($abc) {
+            $like = '%'.$abc.'%';
+
             $builder->where(function ($query) use ($like) {
                 $query->where('title', 'like', $like)
                     ->orWhere('description', 'like', $like)
@@ -40,19 +72,36 @@ class ProductsController extends Controller
             }
         }
 
-        $products = $builder->paginate(16);
+        $count = $builder->count();
+
+        $products = $builder->paginate(15);
 
         return view('products.index', [
+            'counts' => $count,
             'products' => $products,
             'filters'  => [
                 'search' => $search,
                 'order'  => $order,
+                'cla' => $cla,
+                'abc' => $abc
             ],
         ]);
     }
 
     public function show(Product $product, Request $request)
     {
+        $count = DB::table('product_skus')->where('id', $product->skus[0]->id)->value('stock');
+        $price = DB::table('product_skus')->where('id', $product->skus[0]->id)->value('price');
+        $sc = DB::table('products')->where('id', $product->id)->value('sold_count');
+        $rc = DB::table('products')->where('id', $product->id)->value('review_count');
+        $rt = DB::table('products')->where('id', $product->id)->value('rating');
+
+        if( $sku = $request->input('sku') ) {
+        $proid = DB::table('product_skus')->where('id', $sku)->value('product_id');
+        $count = DB::table('product_skus')->where('id', $sku)->value('stock');
+        $price = DB::table('product_skus')->where('id', $sku)->value('price');
+        }
+
         if (!$product->on_sale) {
             throw new InvalidRequestException('商品未上架');
         }
@@ -76,8 +125,16 @@ class ProductsController extends Controller
         // 最后别忘了注入到模板中
         return view('products.show', [
             'product' => $product,
+            'co' => $count,
+            'pri' => $price,
             'favored' => $favored,
-            'reviews' => $reviews
+            'reviews' => $reviews,
+            'sc' => $sc,
+            'rc' => $rc,
+            'rt' => $rt,
+            'filters'  => [                
+                'sku' => $sku
+            ]
         ]);
     }
 
@@ -103,8 +160,9 @@ class ProductsController extends Controller
 
     public function favorites(Request $request)
     {
-        $products = $request->user()->favoriteProducts()->paginate(16);
+        $products = $request->user()->favoriteProducts()->paginate(15);
 
         return view('products.favorites', ['products' => $products]);
     }
+
 }
