@@ -1,9 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('title', ($address->id ? '修改': '新增') . '收货地址')
 
 @section('content')
+<!-- <div class="space-custom"></div> -->
+  <!-- breadcrumb start -->
+  <br>
+	<div class="breadcrumb-area">
+		<div class="container">
+			<ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i></a></li>
+                <!-- <li><a href="#">Shop</a></li> -->
+                <li class="active">add_address</li>
+			</ol>			
+		</div>
+  </div>
+  <br>
 <div class="row">
-<div class="col-lg-10 col-lg-offset-1">
+<div class="col-lg-9 col-lg-offset-2">
 <div class="panel panel-default">
   <div class="panel-heading">
     <h2 class="text-center">
@@ -94,4 +107,5 @@
 </div>
 </div>
 </div>
+<br>
 @endsection

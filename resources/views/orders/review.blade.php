@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('title', '商品评价')
 
 @section('content')
@@ -7,7 +7,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     商品评价
-    <a class="pull-right" href="{{ route('orders.index') }}">返回订单列表</a>
+    <!-- <a class="pull-right" href="{{ route('orders.index') }}">返回订单列表</a> -->
   </div>
   <div class="panel-body">
     <form action="{{ route('orders.review.store', [$order->id]) }}" method="post">
@@ -70,7 +70,8 @@
             @if(!$order->reviewed)
             <button type="submit" class="btn btn-primary center-block">提交</button>
             @else
-            <a href="{{ route('orders.show', [$order->id]) }}" class="btn btn-primary">查看订单</a>
+            <!-- <a href="{{ route('orders.show', [$order->id]) }}" class="btn btn-primary">查看订单</a> -->
+            <a class="btn btn-primary" href="{{ route('orders.index') }}">返回订单列表</a>
             @endif
           </td>
         </tr>

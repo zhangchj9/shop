@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers;use App\Models\UserAddress;
 
 use App\Http\Requests\SendReviewRequest;
 use App\Exceptions\InvalidRequestException;
 use App\Http\Requests\OrderRequest;
-use App\Models\UserAddress;
+
 use App\Models\Order;
 use App\Models\Product; //引入products为了显示
 use Illuminate\Http\Request;
@@ -25,15 +25,38 @@ class OrdersController extends Controller
             ->where('user_id', $request->user()->id)
             ->orderBy('created_at', 'desc')
             ->paginate();
-        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
-        return view('orders.index', ['orders' => $orders,'addresses'=>$addresses]);
+        //$addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
+        return view('orders.index', ['orders' => $orders]);
+    }
+
+    public function myindex(Request $request)
+    {
+
     }
 
     public function show(Order $order, Request $request)
     {
         $this->authorize('own', $order);
-        
-        return view('orders.show', ['order' => $order->load(['items.productSku', 'items.product'])]);
+        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
+        return view('orders.show', ['order' => $order->load(['items.productSku', 'items.product']),'addresses' => $addresses]);
+    }
+
+    public function allorders(Request $request)
+    {
+        $orders = Order::query()
+            ->with(['items.product', 'items.productSku'])
+            ->where('user_id', $request->user()->id)
+            ->orderBy('created_at', 'desc')
+            ->paginate();
+        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
+        return view('orders.allorders', ['orders' => $orders,'addresses' => $addresses]);
+    }
+
+    public function details(Order $order, Request $request)
+    {
+        $this->authorize('own', $order);
+        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
+	return view('orders.details', ['order' => $order->load(['items.productSku', 'items.product']),'addresses' => $addresses]);
     }
 
     public function store(OrderRequest $request, OrderService $orderService)
@@ -136,4 +159,16 @@ class OrdersController extends Controller
 
         return $order;
     }
+
+    public function cancelOrder(Order $order,Request $request)
+    {
+	$this->authorize('own',$order);
+	if ($order->paid_at) {
+           throw new InvalidRequestException('该订单已支付，不可取消，可申请退款');
+	}
+	$order->update([
+	   'closed' => 1,
+	]);
+        return $order;
+    }//用于取消订单的函数
 }

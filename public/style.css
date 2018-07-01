@@ -1,4 +1,4 @@
-/*-----------------------------------------------------------------------------------
+﻿/*-----------------------------------------------------------------------------------
 
     Template Name: Gicor eCommerce Furniture  Template
     Description: This is html5 template
@@ -743,7 +743,7 @@ a.shipping-calculator-button:hover {
     text-transform: uppercase;
     white-space: nowrap;
 }
-.cart_totals table tr.order-total .amount {} .wc-proceed-to-checkout a {
+.cart_totals table tr.order-total .amount {} .wc-proceed-to-checkout button {
     background: #ffae00 none repeat scroll 0 0;
     color: #fff;
     display: inline-block;
@@ -755,7 +755,7 @@ a.shipping-calculator-button:hover {
     padding: 0 30px;
     text-transform: none;
 }
-.wc-proceed-to-checkout a:hover {
+.wc-proceed-to-checkout button:hover {
     background: #252525;
 }
 /*=========================== 
@@ -1179,7 +1179,7 @@ label.inline > a {
     position: inherit;
 }
 .elements1 .main-menu {
-    margin: 0px 10px 0 0;
+    margin: 0px 2px 2px 2px;
 }
 .elements1 .search-block-top {
     margin-top: 0;
@@ -1191,7 +1191,7 @@ label.inline > a {
     padding: 0 15px;
 }
 .elements1 .logo {
-    padding-top: 23px;
+    padding-top: 15px;
 }
 .elements1 .shopping-cart {
     padding-bottom: 25px;

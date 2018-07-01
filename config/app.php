@@ -143,7 +143,7 @@ return [
          * Laravel Framework Service Providers...
          */
         
-        Mews\Captcha\CaptchaServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,//图片验证码
 
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -167,12 +167,14 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class, //博客检索用
+        Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class, //银联支付
 
         /*
          * Package Service Providers...
          */
         //验证码
-        //Germey\Geetest\GeetestServiceProvider::class,
+        Germey\Geetest\GeetestServiceProvider::class, //滑动验证码
 
 
         /*
@@ -200,7 +202,7 @@ return [
     */
 
     'aliases' => [
-        'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,//图片验证码
 
 
         'App' => Illuminate\Support\Facades\App::class,
@@ -236,7 +238,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        //'Geetest' => Germey\Geetest\Geetest::class,
+	    'Geetest' => Germey\Geetest\Geetest::class, //滑动验证码
+	    'Omnipay' => Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class
 
     ],
 

@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Mobile Shop')
+@section('title', 'HandChicken')
 @section('content')
 	<!-- slider-container start -->
 	<div class="slider-container">
 		<!-- Slider Image -->
 		<div id="mainSlider" class="nivoSlider slider-image">
-			<img src="img/slider/1.jpg" alt="" title="#htmlcaption1"/>
-			<img src="img/slider/2.jpg" alt="" title="#htmlcaption2"/>
+			<img src="images/slider/1.jpg" alt="" title="#htmlcaption1"/>
+			<img src="images/slider/2.jpg" alt="" title="#htmlcaption2"/>
 		</div>
 		<!-- Slider Caption 1 -->
 		<div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
@@ -54,17 +54,17 @@
 	</div>
 	<!-- slider-container end -->
 	<!-- banner-area start -->
-	<div class="banner-area pt-70">
+	<div class="banner-area pt-70" data-wow-delay="1s">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 col-sm-6">
+				<div class="col-md-6 col-sm-6" data-wow-delay=".3s">
 					<div class="single-banner">
-						<a href="#"><img src="img/banner/1.jpg" alt="" /></a>
+						<a href="#"><img src="images/banner/1.jpg" alt="" /></a>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-6">
+				<div class="col-md-6 col-sm-6" data-wow-delay=".3s">
 					<div class="single-banner">
-						<a href="#"><img src="img/banner/2.jpg" alt="" /></a>
+						<a href="#"><img src="images/banner/2.jpg" alt="" /></a>
 					</div>
 				</div>
 			</div>
@@ -98,7 +98,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/12.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/12.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -128,7 +128,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/11.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/11.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -160,7 +160,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/3.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/3.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -190,7 +190,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/1.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/1.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -222,7 +222,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/4.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/4.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -252,7 +252,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/11.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/11.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -284,7 +284,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/5.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/5.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -314,7 +314,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/10.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/10.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -346,7 +346,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/5.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/5.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -376,7 +376,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -408,7 +408,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/6.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/6.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -438,7 +438,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -470,7 +470,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/7.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/7.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -500,7 +500,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/8.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/8.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -536,7 +536,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/12.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/12.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -566,7 +566,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/11.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/11.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -598,7 +598,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/10.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/10.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -628,7 +628,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/1.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/1.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -660,7 +660,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -690,7 +690,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/8.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/8.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -722,7 +722,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/8.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/8.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -752,7 +752,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/7.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/7.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -784,7 +784,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/6.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/6.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -814,7 +814,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/5.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/5.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -846,7 +846,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/2.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/2.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -876,7 +876,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/2.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/2.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -908,7 +908,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/1.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/1.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -938,7 +938,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/8.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/8.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -974,7 +974,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/4.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/4.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1004,7 +1004,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/11.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/11.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1036,7 +1036,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/12.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/12.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1066,7 +1066,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/2.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/2.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1098,7 +1098,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/3.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/3.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1128,7 +1128,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/1.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/1.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1160,7 +1160,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/5.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/5.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1190,7 +1190,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/10.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/10.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1222,7 +1222,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/5.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/5.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1252,7 +1252,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1284,7 +1284,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/6.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/6.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1314,7 +1314,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1346,7 +1346,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/7.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/7.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1376,7 +1376,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/8.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/8.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1412,7 +1412,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/6.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/6.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1442,7 +1442,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/5.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/5.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1474,7 +1474,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/2.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/2.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1504,7 +1504,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/2.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/2.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1536,7 +1536,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1566,7 +1566,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/11.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/11.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1598,7 +1598,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/12.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/12.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1628,7 +1628,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/10.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/10.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1660,7 +1660,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/5.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/5.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1690,7 +1690,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1722,7 +1722,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/6.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/6.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1752,7 +1752,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1784,7 +1784,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/7.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/7.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1814,7 +1814,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/8.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/8.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1850,7 +1850,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/2.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/2.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1880,7 +1880,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/10.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/10.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1912,7 +1912,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/3.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/3.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1942,7 +1942,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -1974,7 +1974,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/4.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/4.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2004,7 +2004,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/10.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/10.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2036,7 +2036,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/12.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/12.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2066,7 +2066,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2098,7 +2098,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/12.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/12.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2128,7 +2128,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2160,7 +2160,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40">
 												<div class="product-img">
-													<a href="#"><img src="img/product/7.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/7.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2190,7 +2190,7 @@
 											</div>
 											<div class="product-wrapper mb-40 mrg-nn-xs">
 												<div class="product-img">
-													<a href="#"><img src="img/product/8.jpg" alt="" /></a>
+													<a href="#"><img src="images/product/8.jpg" alt="" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2268,7 +2268,7 @@
 					<div class="col-md-12">
 						<div class="product-wrapper mb-40">
 							<div class="product-img">
-								<a href="#"><img src="img/product/12.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/12.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2298,7 +2298,7 @@
 						</div>
 						<div class="product-wrapper mb-40 mrg-nn-xs">
 							<div class="product-img">
-								<a href="#"><img src="img/product/11.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/11.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2330,7 +2330,7 @@
 					<div class="col-md-12">
 						<div class="product-wrapper mb-40">
 							<div class="product-img">
-								<a href="#"><img src="img/product/3.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/3.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2360,7 +2360,7 @@
 						</div>
 						<div class="product-wrapper mb-40 mrg-nn-xs">
 							<div class="product-img">
-								<a href="#"><img src="img/product/1.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/1.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2392,7 +2392,7 @@
 					<div class="col-md-12">
 						<div class="product-wrapper mb-40">
 							<div class="product-img">
-								<a href="#"><img src="img/product/4.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/4.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2422,7 +2422,7 @@
 						</div>
 						<div class="product-wrapper mb-40 mrg-nn-xs">
 							<div class="product-img">
-								<a href="#"><img src="img/product/11.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/11.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2454,7 +2454,7 @@
 					<div class="col-md-12">
 						<div class="product-wrapper mb-40">
 							<div class="product-img">
-								<a href="#"><img src="img/product/5.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/5.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2484,7 +2484,7 @@
 						</div>
 						<div class="product-wrapper mb-40 mrg-nn-xs">
 							<div class="product-img">
-								<a href="#"><img src="img/product/10.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/10.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2516,7 +2516,7 @@
 					<div class="col-md-12">
 						<div class="product-wrapper mb-40">
 							<div class="product-img">
-								<a href="#"><img src="img/product/5.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/5.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2546,7 +2546,7 @@
 						</div>
 						<div class="product-wrapper mb-40 mrg-nn-xs">
 							<div class="product-img">
-								<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2578,7 +2578,7 @@
 					<div class="col-md-12">
 						<div class="product-wrapper mb-40">
 							<div class="product-img">
-								<a href="#"><img src="img/product/6.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/6.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2608,7 +2608,7 @@
 						</div>
 						<div class="product-wrapper mb-40 mrg-nn-xs">
 							<div class="product-img">
-								<a href="#"><img src="img/product/9.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/9.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2640,7 +2640,7 @@
 					<div class="col-md-12">
 						<div class="product-wrapper mb-40">
 							<div class="product-img">
-								<a href="#"><img src="img/product/7.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/7.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2670,7 +2670,7 @@
 						</div>
 						<div class="product-wrapper mb-40 mrg-nn-xs">
 							<div class="product-img">
-								<a href="#"><img src="img/product/8.jpg" alt="" /></a>
+								<a href="#"><img src="images/product/8.jpg" alt="" /></a>
 								<span class="new-label">New</span>
 								<div class="product-action">
 									<a href="#"><i class="pe-7s-cart"></i></a>
@@ -2717,7 +2717,7 @@
 					<div class="col-lg-12">
 						<div class="blog-wrapper mb-40">
 							<div class="blog-img">
-								<a href="#"><img src="img/blog/1.jpg" alt="" /></a>
+								<a href="#"><img src="images/blog/1.jpg" alt="" /></a>
 							</div>
 							<div class="blog-info">
 								<h3><a href="#">What is Bootstrap? – The History...</a></h3>
@@ -2731,7 +2731,7 @@
 					<div class="col-lg-12">
 						<div class="blog-wrapper mb-40">
 							<div class="blog-img">
-								<a href="#"><img src="img/blog/2.jpg" alt="" /></a>
+								<a href="#"><img src="images/blog/2.jpg" alt="" /></a>
 							</div>
 							<div class="blog-info">
 								<h3><a href="#">From Now we are certified web...</a></h3>
@@ -2745,7 +2745,7 @@
 					<div class="col-lg-12">
 						<div class="blog-wrapper mb-40">
 							<div class="blog-img">
-								<a href="#"><img src="img/blog/1.jpg" alt="" /></a>
+								<a href="#"><img src="images/blog/1.jpg" alt="" /></a>
 							</div>
 							<div class="blog-info">
 								<h3><a href="#">Answers to your Questions about...</a></h3>
@@ -2759,7 +2759,7 @@
 					<div class="col-lg-12">
 						<div class="blog-wrapper mb-40">
 							<div class="blog-img">
-								<a href="#"><img src="img/blog/2.jpg" alt="" /></a>
+								<a href="#"><img src="images/blog/2.jpg" alt="" /></a>
 							</div>
 							<div class="blog-info">
 								<h3><a href="#">Share the Love for PrestaShop 1.6</a></h3>
@@ -2783,37 +2783,37 @@
 					<div class="brand-active">
 						<div class="col-lg-12">
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/1.jpg" alt="" /></a>
+								<a href="#"><img src="images/brand/1.jpg" alt="" /></a>
 							</div>
 						</div>
 						<div class="col-lg-12">
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/2.jpg" alt="" /></a>
+								<a href="#"><img src="images/brand/2.jpg" alt="" /></a>
 							</div>
 						</div>
 						<div class="col-lg-12">
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/3.jpg" alt="" /></a>
+								<a href="#"><img src="images/brand/3.jpg" alt="" /></a>
 							</div>
 						</div>
 						<div class="col-lg-12">
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/4.jpg" alt="" /></a>
+								<a href="#"><img src="images/brand/4.jpg" alt="" /></a>
 							</div>
 						</div>
 						<div class="col-lg-12">
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/5.jpg" alt="" /></a>
+								<a href="#"><img src="images/brand/5.jpg" alt="" /></a>
 							</div>
 						</div>
 						<div class="col-lg-12">
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/1.jpg" alt="" /></a>
+								<a href="#"><img src="images/brand/1.jpg" alt="" /></a>
 							</div>
 						</div>
 						<div class="col-lg-12">
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/2.jpg" alt="" /></a>
+								<a href="#"><img src="images/brand/2.jpg" alt="" /></a>
 							</div>
 						</div>
 					</div>
@@ -2884,7 +2884,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-img">
-                        <a href="shop.html"><img src="img/product/1.jpg" alt="" /></a>
+                        <a href="shop.html"><img src="images/product/1.jpg" alt="" /></a>
                     </div>
                     <div class="modal-pro-content">
                         <h3><a href="single-product.html">Phasellus Vel Hendrerit</a></h3>

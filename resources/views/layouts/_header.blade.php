@@ -3,22 +3,22 @@
                 <div class="row">
                     <div class="col-md-2 col-sm-3 col-xs-12">
                         <div class="logo">
-                            <a href="index.html"><img src="img/logo/logo.jpg" alt="" /></a>
+                            <a href="{{ route('root') }}"><img src="{{URL::asset('images/logo/logo.jpg')}}" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-md-10 col-sm-9 col-xs-12 text-right xs-center">
                         <div class="main-menu display-inline hidden-sm hidden-xs">
                             <nav>
                                 <ul>
-                                    <li><a href="index.html">Home</a>
-                                        <ul class="submenu">
-                                            <li><a href="index.html">home version 1</a></li>
-                                            <li><a href="index-2.html">home version 2</a></li>
-                                            <li><a href="index-3.html">home version 3</a></li>
-                                            <li><a href="index-4.html">home version 4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="shop.html">Choice</a>
+                                @guest
+                                    <li><a href="{{ route('root') }}">Home</a></li>
+                                    <li><a href="{{ route('products.index') }}">Product</a></li>
+                                    <li><a href="{{ route('blogs.index') }}">Blog</a></li>
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                    <li><a href="{{ route('register') }}">Register</a></li>
+                                @else
+                                    <li><a href="{{ route('root') }}">Home</a></li>
+                                    <li><a href="{{ route('products.index') }}">Product</a>
                                         <div class="mega-menu">
                                             <ul>
                                                 <li class="mega-title"><a href="#">Brand</a></li>
@@ -46,7 +46,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="#">Elements</a>
+                                    <li><a href="{{ route('blogs.index') }}">Blog</a>
                                         <div class="mega-menu mega-2-col">
                                             <ul>
                                                 <li class="mega-title"><a href="#">Shortcode-01</a></li>
@@ -72,8 +72,8 @@
                                             </ul>
                                         </div>                                  
                                     </li>
-                                    <li><a href="shop.html">Lighting</a>
-                                        <div class="mega-menu">
+                                    <li><a href="{{route('vip_page')}}">VIP</a>
+                                        <!-- <div class="mega-menu">
                                             <ul>
                                                 <li class="mega-title"><a href="#">Tops</a></li>
                                                 <li><a href="#">Bras & Tanks</a></li>
@@ -98,24 +98,41 @@
                                                 <li><a href="#">suits</a></li>
                                                 <li><a href="#">jackets</a></li>
                                             </ul>
-                                        </div>                                  
-                                    </li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="blog-details.html">blog details</a></li>
-                                            <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                                            <li><a href="cart.html">cart</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="product-details.html">product details</a></li>
-                                            <li><a href="register.html">register</a></li>
-                                            <li><a href="shop.html">shop</a></li>
-                                            <li><a href="/products/favorites">wishlist</a></li>
-                                        </ul>
+                                        </div>                                   -->
                                     </li>
                                     <li><a href="#">What's New</a></li>
+                                    <li>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                            <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
+                                                    <img src="{{ Auth::user()->avatar }}" class="img-responsive img-circle" width="30px" height="30px">
+                                            </span>
+                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                        </a>
+                                        <ul class="submenu">
+                                            <li>
+                                                <a href="{{ route('personalinf.index') }}"><font size="3">个人信息</font></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('user_addresses.index') }}"><font size="3">收货地址</font></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('orders.allorders') }}"><font size="3">我的订单</font></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('products.favorites') }}"><font size="3">我的收藏</font></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                                <font size="3">退出登录</font>
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    {{ csrf_field() }}
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </li> 
                                 </ul>
                             </nav>
                         </div>
@@ -129,12 +146,14 @@
                                 </form>
                             </div> 
                         </div>
+
+                        {{-- 购物车相关信息 --}}
                         <div class="shopping-cart ml-20 display-inline">
-                            <a href="cart.html"><b>shopping cart</b>(2)</a>
+                            <a href="{{ route('cart.index') }}"><b>shopping cart</b>(2)</a>
                             <ul>
                                 <li>
                                     <div class="cart-img">
-                                        <a href="#"><img src="img/cart/1.jpg" alt="" /></a>
+                                        <a href="#"><img src="images/cart/1.jpg" alt="" /></a>
                                     </div>
                                     <div class="cart-content">
                                         <h3><a href="#"> 1 X Faded...</a> </h3>
@@ -147,7 +166,7 @@
                                 </li>
                                 <li>
                                     <div class="cart-img">
-                                        <a href="#"><img src="img/cart/1.jpg" alt="" /></a>
+                                        <a href="#"><img src="images/cart/1.jpg" alt="" /></a>
                                     </div>
                                     <div class="cart-content">
                                         <h3><a href="#"> 1 X Faded...</a> </h3>
@@ -172,34 +191,7 @@
                                 <li class="checkout m-0"><a href="#">checkout <i class="fa fa-angle-right"></i></a></li>
                             </ul>                           
                         </div>
-                        <div class="setting-menu display-inline">
-                            <div class="icon-nav current"></div>
-                            <ul class="content-nav toogle-content">
-                                <li class="currencies-block-top">
-                                    <div class="current"><b>Currency : USD</b></div>
-                                    <ul>
-                                        <li><a href="#">Dollar (USD)</a></li>
-                                        <li><a href="#">Pound (GBP)</a></li>
-                                    </ul>
-                                </li>
-                                <li class="currencies-block-top">
-                                    <div class="current"><b>English</b></div>
-                                    <ul>
-                                        <li><a href="#">English</a></li>
-                                        <li><a href="#">اللغة العربية</a></li>
-                                    </ul>
-                                </li>
-                                <li class="currencies-block-top">
-                                    <div class="current"><b>My Account</b></div>
-                                    <ul>
-                                        <li><a href="#">My account</a></li>
-                                        <li><a href="#">My wishlist</a></li>
-                                        <li><a href="#">Checkout</a></li>
-                                        <li><a href="#">Log in</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -294,6 +286,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="#">What's New</a></li>
+                                @endguest
                                 </ul>
                             </nav>                          
                         </div>

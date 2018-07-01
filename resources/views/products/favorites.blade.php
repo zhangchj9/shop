@@ -1,62 +1,51 @@
 @extends('layouts.app')
 @section('title', '我的收藏')
-
 @section('content')
 <div class="space-custom"></div>
-  <!-- breadcrumb start -->
-  <div class="breadcrumb-area">
-    <div class="container">
-      <ol class="breadcrumb">
-                <li><a href="/index"><i class="fa fa-home"></i></a></li>
-                <li><a href="/products">Shop</a></li>
-                <li class="active">Wishlist</li>
-      </ol>     
-    </div>
+<!-- breadcrumb start -->
+<div class="breadcrumb-area">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{{route('root')}}"><i class="fa fa-home"></i></a></li>
+      <li><a href="{{route('products.index')}}">商品</a></li>
+      <li class="active">我的收藏</li>
+    </ol>
   </div>
-  <!-- breadcrumb end -->
-  <!-- wishlist-area start -->
-  <div class="wishlist-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="wishlist-content">
-            <form action="#">
-              <div class="wishlist-table table-responsive">
-                <table>
-                  <thead>
-                    <tr>
-                      <th class="product-remove"><span class="nobr">Remove</span></th>
-                      <th class="product-thumbnail">Image</th>
-                      <th class="product-name"><span class="nobr">Product Name</span></th>
-                      <th class="product-price"><span class="nobr"> Unit Price </span></th>
-                      <th class="product-stock-stauts"><span class="nobr"> Stock Status </span></th>
-                      <th class="product-add-to-cart"><span class="nobr">add-to-cart </span></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="product-remove"><a href="#">×</a></td>
-                      <td class="product-thumbnail"><a href="#"><img src="img/product/1.jpg" alt="" /></a></td>
-                      <td class="product-name"><a href="#">Vestibulum suscipit</a></td>
-                      <td class="product-price"><span class="amount">£165.00</span></td>
-                      <td class="product-stock-status"><span class="wishlist-in-stock">In Stock</span></td>
-                      <td class="product-add-to-cart"><a href="#"> Add to Cart</a></td>
-                    </tr>
-                    <tr>
-                      <td class="product-remove"><a href="#">×</a></td>
-                      <td class="product-thumbnail"><a href="#"><img src="img/product/1.jpg" alt="" /></a></td>
-                      <td class="product-name"><a href="#">Vestibulum dictum magna</a></td>
-                      <td class="product-price"><span class="amount">£50.00</span></td>
-                      <td class="product-stock-status"><span class="wishlist-in-stock">In Stock</span></td>
-                      <td class="product-add-to-cart"><a href="#"> Add to Cart</a></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>  
-            </form>
-          </div>
+</div>
+<!-- breadcrumb end -->
+<!-- wishlist-area start -->
+<div class="wishlist-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="wishlist-content">
+          <form action="#">
+            <div class="wishlist-table table-responsive">
+              <table>
+                <tbody>
+                  @foreach($products as $product)
+                  <tr>
+                    <td class="product-thumbnail"><a href="{{ route('products.show', ['product' => $product->id]) }}">
+                    <img src="{{ $product->image_url }}" alt="" /></a></td>
+                    <td class="product-name"><a href="{{ route('products.show', ['product' => $product->id]) }}">{{ $product->title }}</a></td>                  
+                    <td class="product-price"><span class="amount">最低价：<b>￥</b>
+                     {{ DB::table('product_skus')->where('id', DB::table('product_skus')->where('product_id', $product->id)->value('id'))->value('price')}}
+                    </span></td>
+                    @if($product->on_sale == 1)
+                    <td class="product-stock-status"><span class="wishlist-in-stock">有货</span></td>
+                    @else
+                    <td class="product-stock-status"><span class="wishlist-in-stock">无货</span></td>
+                    @endif
+                    <td class="product-add-to-cart"><a href="{{ route('products.show', ['product' => $product->id]) }}">前往购买</a></td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
 @endsection

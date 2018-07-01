@@ -6,7 +6,7 @@
 <div class="breadcrumb-area">
   <div class="container">
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-home"></i></a></li>
+      <li><a href="{{route('root')}}"><i class="fa fa-home"></i></a></li>
       <li><a href="{{route('products.index')}}"> 商品</a></li>
       
       <li class="active">{{ $product->title }}</li>
@@ -24,51 +24,49 @@
           <div class="tab-content">
             <div class="tab-pane active" id="home">
               <div class="pro-large-img">
-                <!-- <div id="img2" value="{{ $product->image_url }}" > -->
                 <img src="{{ $product->image_url }}" alt="" />
-              <!-- </div> -->
                 <a class="popup-link" href="{{ $product->image_url }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
               </div>
             </div>
-            <!-- <div class="tab-pane" id="profile">
+            <div class="tab-pane" id="profile">
               <div class="pro-large-img">
-                <img src="img/product/2.jpg" alt="" />
-                <a class="popup-link" href="/img/product/2.jpg">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                <img src="{{ $product->image_url_ai[0] }}" alt="" />
+                <a class="popup-link" href="{{ $product->image_url_ai[0] }}">View larger <i class="fa fa-search-plus" aria-hidden="false"></i></a>
               </div>
             </div>
             <div class="tab-pane" id="messages">
               <div class="pro-large-img">
-                <img src="img/product/3.jpg" alt="" />
-                <a class="popup-link" href="/img/product/3.jpg">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                <img src="{{ $product->image_url_ai[1] }}" alt="" />
+                <a class="popup-link" href="{{ $product->image_url_ai[1] }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
               </div>
             </div>
             <div class="tab-pane" id="settings">
               <div class="pro-large-img">
-                <img src="img/product/4.jpg" alt="" />
-                <a class="popup-link" href="/img/product/4.jpg">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                <img src="{{ $product->image_url_ai[2] }}" alt="" />
+                <a class="popup-link" href="{{ $product->image_url_ai[2] }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
               </div>
             </div>
             <div class="tab-pane" id="settings2">
               <div class="pro-large-img">
-                <img src="img/product/5.jpg" alt="" />
-                <a class="popup-link" href="/img/product/5.jpg">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                <img src="{{ $product->image_url_ai[3] }}" alt="" />
+                <a class="popup-link" href="{{ $product->image_url_ai[3] }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
               </div>
             </div>
             <div class="tab-pane" id="settings3">
               <div class="pro-large-img">
-                <img src="img/product/6.jpg" alt="" />
-                <a class="popup-link" href="/img/product/6.jpg">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                <img src="{{ $product->image_url_ai[4] }}" alt="" />
+                <a class="popup-link" href="{{ $product->image_url_ai[4] }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
               </div>
-            </div> -->
+            </div>
           </div>
           <!-- Nav tabs -->
           <ul class="details-tab">
             <li class="active"><a href="#home" data-toggle="tab"><img src="{{ $product->image_url }}" alt="" /></a></li>
-            <!-- <li><a href="#profile" data-toggle="tab"><img src="img/product/2.jpg" alt="" /></a></li>
-            <li><a href="#messages" data-toggle="tab"><img src="img/product/3.jpg" alt="" /></a></li>
-            <li><a href="#settings" data-toggle="tab"><img src="img/product/4.jpg" alt="" /></a></li>
-            <li><a href="#settings2" data-toggle="tab"><img src="img/product/5.jpg" alt="" /></a></li>
-            <li><a href="#settings3" data-toggle="tab"><img src="img/product/6.jpg" alt="" /></a></li> -->
+            <li><a href="#profile" data-toggle="tab"><img src="{{ $product->image_url_ai[0] }}" alt="" /></a></li>
+            <li><a href="#messages" data-toggle="tab"><img src="{{ $product->image_url_ai[1] }}" alt="" /></a></li>
+            <li><a href="#settings" data-toggle="tab"><img src="{{ $product->image_url_ai[2] }}" alt="" /></a></li>
+            <li><a href="#settings2" data-toggle="tab"><img src="{{ $product->image_url_ai[3] }}" alt="" /></a></li>
+            <li><a href="#settings3" data-toggle="tab"><img src="{{ $product->image_url_ai[4] }}" alt="" /></a></li>
           </ul>
         </div>
       </div>
@@ -106,7 +104,7 @@
           <div class="box-quantity">
             <div class="cart_amount">
               <label></label>
-              <input type="number" value="1" /><span class="stock"></span>
+              <input type="text" value="1" /><span class="stock"></span>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;剩余 {{$co}} 件
             
@@ -134,41 +132,69 @@
     <div class="pro-info-box">
       <!-- Nav tabs -->
       <ul class="pro-info-tab" role="tablist">
-        <li class="active"><a href="#home3" data-toggle="tab">More info</a></li>
-        <li><a href="#profile3" data-toggle="tab">Data sheet</a></li>
-        <li><a href="#messages3" data-toggle="tab">Reviews</a></li>
+        <li class="active"><a href="#home3" data-toggle="tab">商品详情</a></li>
+        <li><a href="#profile3" data-toggle="tab">规格参数</a></li>
+        <li><a href="#messages3" data-toggle="tab">商品评价</a></li>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
         <div class="tab-pane active" id="home3">
           <div class="pro-desc">
-            <p>It’s all screen. With iPhone X, the device is the display. An all‑new 5.8‑inch Super Retina screen fills the hand and dazzles the eyes. The display employs new techniques and technology to precisely follow the curves of the design, all the way to the elegantly rounded corners. A tiny space houses some of the most sophisticated technology we’ve ever developed, including the cameras and sensors that enable Face ID.The most durable glass ever in a smartphone, front and back. Surgical‑grade stainless steel. Wireless charging. Water and dust resistance.</p>
+            <p>{{ $des }}</p>
+            <br />
+            @foreach($product->image_url_bi as $img)
+            <p style="text-align:center"><img src="{{ $img }}" alt="" /></p>
+            @endforeach
           </div>
         </div>
         <div class="tab-pane" id="profile3">
           <div class="pro-desc">
             <table class="table-data-sheet">
               <tbody>
+                @foreach($param as $para)
                 <tr class="odd">
-                  <td>Compositions</td>
-                  <td>Cotton</td>
+                  <td>{{ explode('：', $para)[0] }}</td>
+                  @if(isset(explode('：', $para)[1]))
+                  <td>{{ explode('（', explode('：', $para)[1])[0] }}</td>
+                  @endif
                 </tr>
-                <tr class="even">
+                @endforeach
+                <!-- <tr class="even">
                   <td>Styles</td>
                   <td>Casual</td>
                 </tr>
                 <tr class="odd">
                   <td>Properties</td>
                   <td>Short Sleeve</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
         </div>
+        <br />
         <div class="tab-pane" id="messages3">
-          <div class="pro-desc">
-            <a href="#">Be the first to write your review!</a>
-          </div>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <td>用户</td>
+                <td>商品</td>
+                <td>评分</td>
+                <td>评价</td>
+                <td>时间</td>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($reviews as $review)
+              <tr>
+                <td>{{ $review->order->user->name }}</td>
+                <td>{{ $review->productSku->title }}</td>
+                <td>{{ str_repeat('★', $review->rating) }}{{ str_repeat('☆', 5 - $review->rating) }}</td>
+                <td>{{ $review->review }}</td>
+                <td>{{ $review->reviewed_at->format('Y-m-d H:i') }}</td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -176,529 +202,128 @@
 </div>
 <!-- pro-info-area end -->
 <!-- best-sell-area start -->
+@if($idd=="000")
 <div class="best-sell-area">
   <div class="container">
     <div class="row">
       <div class="section-title text-center mb-50">
-        <h2>Accessories</h2>
+        <h2>猜你喜欢</h2>
       </div>
     </div>
     <div class="row">
       <div class="product-carousel">
+        @foreach($rans as $ran)
         <div class="col-md-12">
           <div class="product-wrapper mb-40 mrg-nn-xs">
             <div class="product-img">
-              <a href="#"><img src="img/product/4.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
+              <a href="{{ route('products.show', ['product' => $ran->id]) }}"><img src="{{$ran->image_url}}" alt="" /></a>
             </div>
             <div class="product-content">
               <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
+                <h3><a href="{{ route('products.show', ['product' => $ran->id]) }}">{{ $ran->title }}</a></h3>
               </div>
               <div class="price-reviews">
                 <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
+                  <span class="price product-price"><b>￥</b>{{ $ran->price }}</span>
+                  <!-- <span class="old-price product-price">$999.00</span> -->
                 </div>
                 <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
+                  销量 <span>{{ $ran->sold_count }}笔</span>
+                  &nbsp;&nbsp;&nbsp;
+                  评价 <span>{{ $ran->review_count }}条</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/12.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/3.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/5.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/5.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/6.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/7.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>
 </div>
+@else
+<div class="best-sell-area">
+  <div class="container">
+    <div class="row">
+      <div class="section-title text-center mb-50">
+        <h2>为您推荐</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="product-carousel">
+        @foreach($foryou as $top)
+        <div class="col-md-12">
+          <div class="product-wrapper mb-40 mrg-nn-xs">
+            <div class="product-img">
+              <a href="{{ route('products.show', ['product' => $top->id]) }}"><img src="{{$top->image_url}}" alt="" /></a>
+            </div>
+            <div class="product-content">
+              <div class="pro-title">
+                <h3><a href="{{ route('products.show', ['product' => $top->id]) }}">{{ $top->title }}</a></h3>
+              </div>
+              <div class="price-reviews">
+                <div class="price-box">
+                  <span class="price product-price"><b>￥</b>{{ $top->price }}</span>
+                  <!-- <span class="old-price product-price">$999.00</span> -->
+                </div>
+                <div class="pro-rating">
+                  销量 <span>{{ $top->sold_count }}笔</span>
+                  &nbsp;&nbsp;&nbsp;
+                  评价 <span>{{ $top->review_count }}条</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+  </div>
+</div>
+@endif
 <!-- best-sell-area end -->
 <!-- best-sell-area start -->
 <div class="best-sell-area ptb-60">
   <div class="container">
     <div class="row">
       <div class="section-title text-center mb-50">
-        <h2>12 other products in the same category: </h2>
+        <h2>销量最高</h2>
       </div>
     </div>
     <div class="row">
       <div class="product-carousel">
+        @foreach($top5 as $top)
         <div class="col-md-12">
           <div class="product-wrapper mb-40 mrg-nn-xs">
             <div class="product-img">
-              <a href="#"><img src="/img/product/1.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
+              <a href="{{ route('products.show', ['product' => $top->id]) }}"><img src="{{$top->image_url}}" alt="" /></a>
             </div>
             <div class="product-content">
               <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
+                <h3><a href="{{ route('products.show', ['product' => $top->id]) }}">{{ $top->title }}</a></h3>
               </div>
               <div class="price-reviews">
                 <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
+                  <span class="price product-price"><b>￥</b>{{ $top->price }}</span>
+                  <!-- <span class="old-price product-price">$999.00</span> -->
                 </div>
                 <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
+                  销量 <span>{{ $top->sold_count }}笔</span>
+                  &nbsp;&nbsp;&nbsp;
+                  评价 <span>{{ $top->review_count }}条</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/2.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/9.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/8.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/7.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/3.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="product-wrapper mb-40 mrg-nn-xs">
-            <div class="product-img">
-              <a href="#"><img src="img/product/7.jpg" alt="" /></a>
-              <span class="new-label">New</span>
-              <div class="product-action">
-                <a href="#"><i class="pe-7s-cart"></i></a>
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-folder"></i></a>
-                <a href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-              </div>
-            </div>
-            <div class="product-content">
-              <div class="pro-title">
-                <h3><a href="product-details.html">Cras Neque Metus</a></h3>
-              </div>
-              <div class="price-reviews">
-                <div class="price-box">
-                  <span class="price product-price">$999.00</span>
-                  <span class="old-price product-price">$999.00</span>
-                </div>
-                <div class="pro-rating">
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                  <a href="#"><i class="fa fa-star-o"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>
 </div>
 <!-- best-sell-area end -->
 <!-- brand-area start -->
-<div class="brand-area">
-  <div class="container">
-    <div class="brand-sep ptb-50">
-      <div class="row">
-        <div class="brand-active">
-          <div class="col-lg-12">
-            <div class="single-brand">
-              <a href="#"><img src="img/brand/1.jpg" alt="" /></a>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="single-brand">
-              <a href="#"><img src="img/brand/2.jpg" alt="" /></a>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="single-brand">
-              <a href="#"><img src="img/brand/3.jpg" alt="" /></a>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="single-brand">
-              <a href="#"><img src="img/brand/4.jpg" alt="" /></a>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="single-brand">
-              <a href="#"><img src="img/brand/5.jpg" alt="" /></a>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="single-brand">
-              <a href="#"><img src="img/brand/1.jpg" alt="" /></a>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="single-brand">
-              <a href="#"><img src="img/brand/2.jpg" alt="" /></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- brand-area end -->
 <!-- service-area start -->
 <div class="service-area pt-70 pb-40 gray-bg">
@@ -825,10 +450,8 @@ $('.search-form select[name=sku]').on('change', function() {
 $('.search-form').submit();
 });
 })
-
 // var str = $("#img2").attr("value");
 // document.getElementById("img1").src=str.split(';')[0];
 // document.getElementById("img3").href=str.split(';')[0];
-
 </script>
 @endsection

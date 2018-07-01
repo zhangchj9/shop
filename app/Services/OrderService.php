@@ -36,6 +36,7 @@ class OrderService
             // 订单关联到当前用户
             $order->user()->associate($user);
             // 写入数据库
+            $order->update(['closed' => 0]);
             $order->save();
 
             $totalAmount = 0;

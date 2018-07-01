@@ -32,4 +32,14 @@ Route::group([
     $router->get('coupon_codes/{id}/edit', 'CouponCodesController@edit');
     $router->put('coupon_codes/{id}', 'CouponCodesController@update');
     $router->delete('coupon_codes/{id}', 'CouponCodesController@destroy');
+
+    $router->get('blog', 'BlogController@index');
+    $router->post('blog', 'BlogController@store');
+    $router->get('blog/create', 'BlogController@create');
+    $router->get('blog/{id}/edit', 'BlogController@edit');
+    $router->put('blog/{id}', 'BlogController@update');
+    $router->delete('blog/{id}', 'BlogController@destroy');
+
+
+
 });

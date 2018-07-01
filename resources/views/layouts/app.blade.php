@@ -1,33 +1,49 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title', 'Shop')</title>
-    <meta name="description" content="">
+    <title>@yield('title', 'HandChicken')</title>
+    <!-- <meta name="description" content=""> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-    ============================================ -->        
-    <link rel="shortcut icon" type="/image/x-icon" href="/img/favicon.png">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- favicon============================================ --> 
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" type="/image/x-icon" href="/images/favicon.ico">
     
     <!-- All css files are included here. -->
     <!-- Bootstrap framework main css -->
+    
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="/css/buttons.css">
     <!-- This core.css file contents all plugings css file. -->
+    
     <link rel="stylesheet" href="/css/core.css">
     <!-- Theme shortcodes/elements style -->
+    
     <link rel="stylesheet" href="/css/shortcode/shortcodes.css">
     <!-- Theme main style -->
+    
     <link rel="stylesheet" href="/style.css">
     <!-- Responsive css -->
+    
     <link rel="stylesheet" href="/css/responsive.css">
     <!-- User style -->
+    
     <link rel="stylesheet" href="/css/custom.css">
     
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script> <!-- 加载微博登陆、点赞、分享等功能的必备脚本 -->
     <!-- Modernizr JS -->
+    <!-- <script src="vue.js"></script> -->
+    <!-- <script src="/js/app.js"></script> -->
+    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
+    <!-- <script src="/app.js"></script> -->
+    
     <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
+    
 </head>
 <body>
     <!--[if lt IE 8]>
@@ -49,7 +65,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-img">
-                        <a href="shop.html"><img src="/img/product/1.jpg" alt="" /></a>
+                        <a href="shop.html"><img src="/images/product/1.jpg" alt="" /></a>
                     </div>
                     <div class="modal-pro-content">
                         <h3><a href="single-product.html">Phasellus Vel Hendrerit</a></h3>
@@ -87,23 +103,45 @@
     </div>
     <!-- JS 脚本 -->
     <!-- jquery latest version -->
+    <!-- <script src="/js/app.js"></script> -->
+    <!-- <script src="/app.js"></script> -->
+    
+    <!-- <script src="js/app.js"></script> -->
     <script src="/js/vendor/jquery-1.12.0.min.js"></script>
+
+    
     <!-- Bootstrap framework js -->
+    <!-- <script src="js/app.js"></script> -->
     <script src="/js/bootstrap.min.js"></script>
+
     <!-- ajax-mail js -->
     <script src="/js/ajax-mail.js"></script>
+
     <!-- owl.carousel js -->
     <script src="/js/owl.carousel.min.js"></script>
+
     <!-- owl.carousel js -->
     <script src="/js/jquery-ui.min.js"></script>
+
     <!-- jquery.nivo.slider js -->
+
     <script src="/js/jquery.nivo.slider.pack.js"></script>
+
     <!-- All js plugins included in this file. -->
     <script src="/js/plugins.js"></script>
+
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="/js/main.js"></script>
+    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
 
+    <!-- <script src="/js/app.js"></script> -->
     <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{URL::asset('js/blogs/index.js')}}"></script>
+    <script src="{{URL::asset('js/blogs/comment.js')}}"></script>
+        
     @yield('scriptsAfterJs')
 </body>
+
+
+
 </html>

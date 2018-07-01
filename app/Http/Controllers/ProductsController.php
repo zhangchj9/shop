@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\OrderItem;
 use DB;
 
+
 class ProductsController extends Controller
 {
     public function index(Request $request)
@@ -16,8 +17,17 @@ class ProductsController extends Controller
         $builder = Product::query()->where('on_sale', true);
         // 判断是否有提交 search 参数，如果有就赋值给 $search 变量
         // search 参数用来模糊搜索商品
-        $cla = $request->input('cla');
-        $abc = $request->input('abc');
+        $brand = $request->input('brand');
+        $memo = $request->input('memo');
+        $disk = $request->input('disk');
+        $floor = $request->input('floor');
+        $highest = $request->input('highest');
+        $cpu = $request->input('cpu');
+        $pixel = $request->input('pixel');
+        $siz = $request->input('siz');
+        $sys = $request->input('sys');
+        $bpix = $request->input('bpix');
+        $fpix = $request->input('fpix');
         $search = $request->input('search', '');
         
         if ($search) {
@@ -28,36 +38,123 @@ class ProductsController extends Controller
                     ->orWhere('description', 'like', $like)
                     ->orWhereHas('skus', function ($query) use ($like) {
                         $query->where('title', 'like', $like)
-                            ->orWhere('description', 'like', $like);
+                            ->orWhere('description', 'like', $like)
+                            ->orWhere('param', 'like', $like);
                     });
             });
         }
 
-        if($cla) {
-            $like = '%'.$cla.'%';
+        if($memo) {
+            $like = '%'.$memo.'%';
+
+            $builder->WhereHas('skus', function ($query) use ($like) {
+                        $query->Where('param', 'like', $like);
+                    });
+            }
+        
+
+        if($disk) {
+            $like = '%'.$disk.'%';
+
+            $builder->WhereHas('skus', function ($query) use ($like) {
+                        $query->Where('param', 'like', $like);
+                    });
+            }
+
+        if($brand) {
+            $like = '%'.$brand.'%';
 
             $builder->where(function ($query) use ($like) {
                 $query->where('title', 'like', $like)
                     ->orWhere('description', 'like', $like)
                     ->orWhereHas('skus', function ($query) use ($like) {
                         $query->where('title', 'like', $like)
-                            ->orWhere('description', 'like', $like);
+                            ->orWhere('description', 'like', $like)
+                            ->orWhere('param', 'like', $like);
                     });
             });
         }
 
-        if($abc) {
-            $like = '%'.$abc.'%';
+        if($floor && !$highest) {            
+
+            $builder->where(function ($query) use ($floor) {
+                $query->WhereHas('skus', function ($query) use ($floor) {
+                        $query->where('price', '>', $floor);
+                    });
+            });
+            }
+
+        if($highest && !$floor) {            
+
+            $builder->where(function ($query) use ($highest) {
+                $query->WhereHas('skus', function ($query) use ($highest) {
+                        $query->where('price', '<', $highest);
+                    });
+            });
+            }
+
+        if($highest && $floor) {            
+
+            $builder->where(function ($query) use ($highest,$floor) {
+                $query->WhereHas('skus', function ($query) use ($highest,$floor) {
+                        $query->whereBetween('price', [$floor, $highest]);
+                    });
+            });
+            }
+
+        if($cpu) {
+            $like = '%'.$cpu.'%';
 
             $builder->where(function ($query) use ($like) {
                 $query->where('title', 'like', $like)
                     ->orWhere('description', 'like', $like)
                     ->orWhereHas('skus', function ($query) use ($like) {
                         $query->where('title', 'like', $like)
-                            ->orWhere('description', 'like', $like);
+                            ->orWhere('description', 'like', $like)
+                            ->orWhere('param', 'like', $like);
                     });
             });
         }
+
+        if($pixel) {
+            $like = '%'.$pixel.'%';
+
+            $builder->WhereHas('skus', function ($query) use ($like) {
+                        $query->Where('param', 'like', $like);
+                    });
+            }
+
+        if($siz) {
+            $like = '%'.$siz.'%';
+
+            $builder->WhereHas('skus', function ($query) use ($like) {
+                        $query->Where('param', 'like', $like);
+                    });
+            }
+
+        if($sys) {
+            $like = '%'.$sys.'%';
+
+            $builder->WhereHas('skus', function ($query) use ($like) {
+                        $query->Where('param', 'like', $like);
+                    });
+            }
+
+        if($bpix) {
+            $like = '%'.$bpix.'%';
+
+            $builder->WhereHas('skus', function ($query) use ($like) {
+                        $query->Where('param', 'like', $like);
+                    });
+            }
+
+        if($fpix) {
+            $like = '%'.$fpix.'%';
+
+            $builder->WhereHas('skus', function ($query) use ($like) {
+                        $query->Where('param', 'like', $like);
+                    });
+            }
 
         // 是否有提交 order 参数，如果有就赋值给 $order 变量
         // order 参数用来控制商品的排序规则
@@ -82,24 +179,145 @@ class ProductsController extends Controller
             'filters'  => [
                 'search' => $search,
                 'order'  => $order,
-                'cla' => $cla,
-                'abc' => $abc
+                'brand' => $brand,
+                'memo' => $memo,
+                'disk' => $disk,
+                'floor' => $floor,
+                'highest' => $highest,
+                'cpu' => $cpu,
+                'pixel' => $pixel,
+                'siz' => $siz,
+                'sys' => $sys,
+                'bpix' => $bpix,
+                'fpix' => $fpix
             ],
         ]);
     }
 
     public function show(Product $product, Request $request)
     {
+        $id = "000";        
+        $builder = Product::query()->where('on_sale', true);
+            $foryou = $builder
+                    -> orderBy(\DB::raw('RAND()'))
+                    -> take(5)
+                    -> get();
+        if($request->user()) {
+            $id = $request->user()->id;
+            $person = DB::table('personalizations')->where('user_id', $id)->value('id');            
+        }        
+        if($request->user() && $person) {      //个性化推荐算法
+        $id = $request->user()->id;
+        $brand = DB::table('personalizations')->where('user_id', $id)->value('brand');
+        $brand = '%'.$brand.'%';
+        $photo = DB::table('personalizations')->where('user_id', $id)->value('photo');
+        $memosize = DB::table('personalizations')->where('user_id', $id)->value('memorysize');
+        $screensize = DB::table('personalizations')->where('user_id', $id)->value('screensize');
+        $ram = DB::table('personalizations')->where('user_id', $id)->value('ram');
+        $builder = Product::query()->where('on_sale', true);
+        $first = $builder->WhereHas('skus', function ($query) use ($brand) {
+                        $query->Where('param', 'like', $brand);
+                    });
+        $builder = Product::query()->where('on_sale', true);
+        $second = $builder->WhereHas('skus', function ($query) use ($brand) {
+                        $query->Where('param', 'not like', $brand);
+                    });
+        $foryou = $first->unionall($second);
+        if($screensize==0) {}
+        else if($screensize==1) {
+            $foryou = $foryou->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv1%')
+                        ->orWhere('param', 'like', '%z_lv2%');
+                    });
+        }
+        else if($screensize==2) {
+            $foryou = $foryou->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv3%')
+                        ->orWhere('param', 'like', '%z_lv4%');
+                    });
+        }
+        else if($screensize==3) {
+            $foryou = $foryou->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv5%')
+                        ->orWhere('param', 'like', '%z_lv6%');
+                    });
+        }
+        if($photo==0) {}
+        else if($photo==1) {
+            $foryou = $foryou->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%b_lv3%')
+                        ->orWhere('param', 'like', '%b_lv4%')
+                        ->orWhere('param', 'like', '%b_lv5%');
+                    });
+        }
+        else if($photo==2) {
+            $foryou = $foryou->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%b_lv4%')
+                        ->orWhere('param', 'like', '%b_lv5%');
+                    });
+        }
+        if($memosize==0) {}
+        else if($memosize==1) {
+            $foryou = $foryou->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：32GB%')
+                        ->orWhere('param', 'like', '%机身存储：64GB%')
+                        ->orWhere('param', 'like', '%机身存储：128GB%')
+                        ->orWhere('param', 'like', '%机身存储：256GB%')
+                        ->orWhere('param', 'like', '%机身存储：512GB%')
+                        ->orWhere('param', 'like', '%d_up%');
+                    });
+        }
+        else if($memosize==2) {
+            $foryou = $foryou->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：128GB%')                        
+                        ->orWhere('param', 'like', '%机身存储：256GB%')
+                        ->orWhere('param', 'like', '%机身存储：512GB%')
+                        ->orWhere('param', 'like', '%d_up%');
+                    });
+        }
+        if($ram==0) {}
+        else if($ram==1) {
+            $foryou = $foryou->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'not like', '%m_down%');
+                    });
+        }
+        else if($ram==2) {
+            $foryou = $foryou->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%内存：4GB%')
+                        ->orWhere('param', 'like', '%内存：6GB%')
+                        ->orWhere('param', 'like', '%内存：8GB%')
+                        ->orWhere('param', 'like', '%m_up%');
+                    });
+        }
+        $foryou = $foryou->get();
+        }
+        $builder = Product::query()->where('on_sale', true);
+        $rans = $builder
+                    -> orderBy(\DB::raw('RAND()'))
+                    -> take(5)
+                    -> get();
+        $builder = Product::query()->where('on_sale', true);
+        $top5 = $builder
+                    -> orderBy('sold_count','desc')
+                    -> take(5)
+                    -> get();
+
         $count = DB::table('product_skus')->where('id', $product->skus[0]->id)->value('stock');
         $price = DB::table('product_skus')->where('id', $product->skus[0]->id)->value('price');
+        $des = DB::table('product_skus')->where('id', $product->skus[0]->id)->value('description');
+        $param = DB::table('product_skus')->where('id', $product->skus[0]->id)->value('param');
+        $param = explode('；', $param);
+
         $sc = DB::table('products')->where('id', $product->id)->value('sold_count');
         $rc = DB::table('products')->where('id', $product->id)->value('review_count');
-        $rt = DB::table('products')->where('id', $product->id)->value('rating');
+        $rt = DB::table('products')->where('id', $product->id)->value('rating');        
 
         if( $sku = $request->input('sku') ) {
-        $proid = DB::table('product_skus')->where('id', $sku)->value('product_id');
         $count = DB::table('product_skus')->where('id', $sku)->value('stock');
         $price = DB::table('product_skus')->where('id', $sku)->value('price');
+        $des = DB::table('product_skus')->where('id', $sku)->value('description');
+        $param = DB::table('product_skus')->where('id', $sku)->value('param');
+        $param = explode('；', $param);
         }
 
         if (!$product->on_sale) {
@@ -124,9 +342,15 @@ class ProductsController extends Controller
         
         // 最后别忘了注入到模板中
         return view('products.show', [
+            'idd' => $id,
+            'foryou' => $foryou,
+            'rans' => $rans,
+            'top5' => $top5,
             'product' => $product,
+            'param' => $param,
             'co' => $count,
             'pri' => $price,
+            'des' => $des,
             'favored' => $favored,
             'reviews' => $reviews,
             'sc' => $sc,
@@ -162,7 +386,24 @@ class ProductsController extends Controller
     {
         $products = $request->user()->favoriteProducts()->paginate(15);
 
-        return view('products.favorites', ['products' => $products]);
+        
+
+        $price = null;
+        $count = null;
+
+        if( $sku = $request->input('sku') ) {
+            $price = DB::table('product_skus')->where('id', $sku)->value('price');
+            $count = DB::table('product_skus')->where('id', $sku)->value('stock');
+        }
+
+        return view('products.favorites', [
+            'products' => $products,
+            'pri' => $price,
+            'co' => $count,
+            'filters'  => [                
+                'sku' => $sku
+            ]
+        ]);
     }
 
 }

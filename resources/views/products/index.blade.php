@@ -21,125 +21,125 @@
       <div class="col-md-3 col-sm-4">
         <div class="column">
           <h2 class="title-block">分类<button name="classify" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></h2>
-          <div class="sidebar-widget">
-            <h3 class="sidebar-title">品牌</h3>
-            <ul class="sidebar-menu">
-              <li><a href="#">A </a></li>
-              <li><a href="#">B </a></li>
-            </ul>
-          </div>
-          <div class="sidebar-widget">
-            
-            <h3 class="sidebar-title">运行内存</h3>
-            <!-- <div class="selector-field"> -->
-            <select name="cla">
+          <div class="sidebar-widget">            
+            <h3 class="sidebar-title">品牌</h3>            
+            <select name="brand">
                     <option value="">全部</option>
-                    <option value="2GB以下">2GB以下</option>
-                    <option value="2GB">2GB</option>
-                    <option value="3GB">3GB</option>
-                    <option value="4GB">4GB</option>
-                    <option value="6GB">6GB</option>
-                    <option value="8GB">8GB</option>
-                  </select>
-                <!-- </div> -->
-            <!-- <ul class="sidebar-menu">
-              <li>所有<button name="cla" value="" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>2GB以下<button name="cla" value="2GB以下" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>2GB<button name="cla" value="2GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>3GB<button name="cla" value="3GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>4GB<button name="cla" value="4GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>6GB<button name="cla" value="6GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>8GB<button name="cla" value="8GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>            
-            </ul> -->
-          
+                    <option value="Apple">Apple</option>
+                    <option value="OPPO">OPPO</option>
+                    <option value="HUAWEI">HUAWEI</option>
+                    <option value="VIVO">VIVO</option>
+                    <option value="SAMSUNG">SAMSUNG</option>
+                    <option value="MEIZU">MEIZU</option>
+                    <option value="MI">MI</option>
+                    <option value="SONY">SONY</option>
+                    <option value="NOKIA">NOKIA</option>
+                    <option value="b_other">其他品牌</option>
+                  </select>                       
           </div>
-          <div class="sidebar-widget">
-            
-            <h3 class="sidebar-title">机身内存</h3>
-            <!-- <div class="selector-field"> -->
-            <select name="abc">
+          <div class="sidebar-widget">            
+            <h3 class="sidebar-title">运行内存</h3>           
+            <select name="memo">
                     <option value="">全部</option>
-                    <option value="8GB以下">8GB以下</option>
-                    <option value="16GB">16GB</option>
-                    <option value="32GB">32GB</option>
-                    <option value="64GB">64GB</option>
-                    <option value="128GB">128GB</option>
-                    <option value="256GB">256GB</option>
-                    <option value="512GB">512GB及以上</option>
-                  </select>
-                <!-- </div> -->
-            <!-- <ul class="sidebar-menu">
-              <li>所有<button name="cla" value="" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>2GB以下<button name="cla" value="2GB以下" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>2GB<button name="cla" value="2GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>3GB<button name="cla" value="3GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>4GB<button name="cla" value="4GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>6GB<button name="cla" value="6GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>
-              <li>8GB<button name="cla" value="8GB" class="button button-box button-tiny f-right"><i class="fa fa-plus"></i></button></li>            
-            </ul> -->
-          
+                    <option value="m_down">2GB以下</option>
+                    <option value="内存：2GB">2GB</option>
+                    <option value="内存：3GB">3GB</option>
+                    <option value="内存：4GB">4GB</option>
+                    <option value="内存：6GB">6GB</option>
+                    <option value="内存：8GB">8GB</option>
+                    <option value="m_up">8GB以上</option>
+                  </select>                       
           </div>
-          
+          <div class="sidebar-widget">            
+            <h3 class="sidebar-title">机身存储</h3>            
+            <select name="disk">
+                    <option value="">全部</option>
+                    <option value="d_down">8GB以下</option>
+                    <option value="机身存储：8GB">8GB</option>
+                    <option value="机身存储：16GB">16GB</option>
+                    <option value="机身存储：32GB">32GB</option>
+                    <option value="机身存储：64GB">64GB</option>
+                    <option value="机身存储：128GB">128GB</option>
+                    <option value="机身存储：256GB">256GB</option>
+                    <option value="机身存储：512GB">512GB</option>
+                    <option value="d_up">512GB以上</option>
+                  </select>                       
+          </div>          
           <div class="sidebar-widget">
-            <h3 class="sidebar-title">价格</h3>
-            <div class="price-filter">
-              <p>
-                <label for="amount">Range:</label>
-                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-              </p>
-              <div id="slider-range"></div>
-            </div>
+            <h3 class="sidebar-title">价格区间</h3>
+            <input type="number" class="form-control input-xs" name="floor" placeholder="最低价格" />
+            <br /><br />
+            <input type="number" class="form-control input-xs" name="highest" placeholder="最高价格" />
           </div>
-          <div class="sidebar-widget">
-            <h3 class="sidebar-title">CPU核数</h3>
-            <ul class="sidebar-menu">
-              <li><a href="#">单核 </a></li>
-              <li><a href="#">双核 </a></li>
-              <li><a href="#">四核 </a></li>
-              <li><a href="#">八核 </a></li>
-              <li><a href="#">十核 </a></li>
-              <li><a href="#">其他 </a></li>
-            </ul>
+          <div class="sidebar-widget">            
+            <h3 class="sidebar-title">CPU核数</h3>            
+            <select name="cpu">
+                    <option value="">全部</option>
+                    <option value="单核">单核</option>
+                    <option value="双核">双核</option>
+                    <option value="四核">四核</option>
+                    <option value="八核">八核</option>
+                    <option value="十核">十核</option>
+                    <option value="c_other">其他</option>
+                  </select>                       
+          </div> 
+          <div class="sidebar-widget">            
+            <h3 class="sidebar-title">屏幕分辨率</h3>            
+            <select name="pixel">
+              <!-- 录入参数时的格式为（屏幕分辨率：1920×1080(p_lv3)） -->
+                    <option value="">全部</option>
+                    <option value="p_lv1">标清SD</option>
+                    <option value="p_lv2">高清HD</option>
+                    <option value="p_lv3">全高清FHD</option>
+                    <option value="p_lv4">超高清UHD</option>
+                  </select>                       
           </div>
-          <div class="sidebar-widget">
-            <h3 class="sidebar-title">分辨率</h3>
-            <ul class="sidebar-menu">
-              <li><a href="#">高清HD </a></li>
-              <li><a href="#">全高清FHD </a></li>
-              <li><a href="#">超高清UHD </a></li>
-              <li><a href="#">标清SD </a></li>
-              <li><a href="#">其他 </a></li>
-            </ul>
+          <div class="sidebar-widget">            
+            <h3 class="sidebar-title">屏幕尺寸</h3>            
+            <select name="siz">
+              <!-- 录入参数时的格式为（屏幕尺寸：5.5英寸(z_lv5)） -->
+                    <option value="">全部</option>
+                    <option value="z_lv1">4.0英寸以下</option>
+                    <option value="z_lv2">4.0-4.4英寸</option>
+                    <option value="z_lv3">4.5-4.9英寸</option>
+                    <option value="z_lv4">5.0-5.4英寸</option>
+                    <option value="z_lv5">5.5-5.9英寸</option>
+                    <option value="z_lv6">6.0英寸及以上</option>
+                  </select>                       
           </div>
-          <div class="sidebar-widget">
-            <h3 class="sidebar-title">屏幕尺寸</h3>
-            <ul class="sidebar-menu">
-              <li><a href="products/favorites">8GB以下 </a></li>
-              <li><a href="#">16GB </a></li>
-              <li><a href="#">32GB </a></li>
-              <li><a href="#">64GB </a></li>
-              <li><a href="#">128GB </a></li>
-              <li><a href="#">256GB </a></li>
-              <li><a href="#">512GB及以上 </a></li>
-            </ul>
+          <div class="sidebar-widget">            
+            <h3 class="sidebar-title">操作系统</h3>            
+            <select name="sys">
+              <!-- 录入其他操作系统数据时的格式为（操作系统：BlackBerryOS(s_other)） -->
+                    <option value="">全部</option>
+                    <option value="IOS">IOS</option>
+                    <option value="Android">Android</option>
+                    <option value="s_other">其他</option>
+                  </select>                       
           </div>
-          <div class="sidebar-widget">
-            <h3 class="sidebar-title">系统</h3>
-            <ul class="sidebar-menu">
-              <li><a href="#">   Casual  </a></li>
-              <li><a href="#"> Dressy  </a></li>
-              <li><a href="#"> Girly  </a></li>
-            </ul>
+          <div class="sidebar-widget">            
+            <h3 class="sidebar-title">后置摄像头像素</h3>            
+            <select name="bpix">
+              <!-- 向下取整，如1200万算入1200-2000档。录入数据时的格式为（后置摄像头像素：1200万(b_lv3)） -->
+                    <option value="">全部</option>
+                    <option value="b_lv1">800万以下</option>
+                    <option value="b_lv2">800万-1200万</option>
+                    <option value="b_lv3">1200万-2000万</option>
+                    <option value="b_lv4">2000万-4000万</option>
+                    <option value="b_lv5">4000万以上</option>
+                  </select>                       
           </div>
-          <div class="sidebar-widget">
-            <h3 class="sidebar-title">像素</h3>
-            <ul class="sidebar-menu">
-              <li><a href="#">Colorful Dress <span>(2)</span></a></li>
-              <li><a href="#">Maxi Dress <span>(4)</span></a></li>
-              <li><a href="#">Midi Dress <span>(4)</span></a></li>
-              <li><a href="#">Short Dress <span>(3)</span></a></li>
-              <li><a href="#">Short Sleeve <span>(2)</span></a></li>
-            </ul>
+          <div class="sidebar-widget">            
+            <h3 class="sidebar-title">前置摄像头像素</h3>            
+            <select name="fpix">
+              <!-- 向下取整，如1200万算入1200-2000档。录入数据时的格式为（前置摄像头像素：1200万(f_lv4)） -->
+                    <option value="">全部</option>
+                    <option value="f_lv1">400万以下</option>
+                    <option value="f_lv2">400万-800万</option>
+                    <option value="f_lv3">800万-1200万</option>
+                    <option value="f_lv4">1200万-2000万</option>
+                    <option value="f_lv5">2000万以上</option>
+                  </select>                       
           </div>
         </div>
       </div>
@@ -241,6 +241,56 @@
 <!-- brand-area start -->
 <!-- brand-area end -->
 <!-- service-area start -->
+<div class="service-area pt-70 pb-40 gray-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="single-service mb-30">
+          <div class="service-icon">
+            <i class="pe-7s-world"></i>
+          </div>
+          <div class="service-title">
+            <h3>FREE SHIPPING</h3>
+            <p>Free shipping on all UK orders</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="single-service mb-30">
+          <div class="service-icon">
+            <i class="pe-7s-refresh"></i>
+          </div>
+          <div class="service-title">
+            <h3>FREE EXCHANGE</h3>
+            <p>30 days return on all items</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="single-service mb-30 sm-mrg">
+          <div class="service-icon">
+            <i class="pe-7s-headphones"></i>
+          </div>
+          <div class="service-title">
+            <h3>PREMIUM SUPPORT</h3>
+            <p>We support online 24 hours a day</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="single-service mb-30 xs-mrg sm-mrg">
+          <div class="service-icon">
+            <i class="pe-7s-gift"></i>
+          </div>
+          <div class="service-title">
+            <h3>BLACK FRIDAY</h3>
+            <p>Shocking discount on every friday</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 @section('scriptsAfterJs')
 <script>
@@ -248,22 +298,23 @@ var filters = {!! json_encode($filters) !!};
 $(document).ready(function () {
 $('.search-form input[name=search]').val(filters.search);
 $('.search-form select[name=order]').val(filters.order);
-$('.search-form select[name=cla]').val(filters.cla);
-$('.search-form select[name=abc]').val(filters.abc);
+$('.search-form select[name=memo]').val(filters.memo);
+$('.search-form select[name=disk]').val(filters.disk);
+$('.search-form select[name=brand]').val(filters.brand);
+$('.search-form input[name=floor]').val(filters.floor);
+$('.search-form input[name=highest]').val(filters.highest);
+$('.search-form select[name=cpu]').val(filters.cpu);
+$('.search-form select[name=pixel]').val(filters.pixel);
+$('.search-form select[name=sys]').val(filters.sys);
+$('.search-form select[name=siz]').val(filters.siz);
+$('.search-form select[name=bpix]').val(filters.bpix);
+$('.search-form select[name=fpix]').val(filters.fpix);
 $('.search-form select[name=order]').on('change', function() {
 $('.search-form').submit();
 });
-// $('.search-form select[name=cla]').on('change', function() {
-// $('.search-form').submit();
-// });
-// })
 $('.search-form button[name=classify]').on('change', function() {
 $('.search-form').submit();
 });
 })
-
-// var str = $("#img2").attr("value");
-// document.getElementById("img1").src=str.split(';')[0];
-// document.getElementById("img3").href=str;
 </script>
 @endsection

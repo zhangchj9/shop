@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['title', 'description', 'image', 'on_sale', 'rating', 'sold_count', 'review_count', 'price'];
+    protected $fillable = ['title', 'description', 'image', 'on_sale', 'rating', 'sold_count', 'review_count', 'price', 'nimage', 'introimage'];
     protected $casts = [
         'on_sale' => 'boolean', // on_sale 是一个布尔类型的字段
+        'nimage' => 'json',
+        'introimage' => 'json',
     ];
+    
     // 与商品SKU关联
     public function skus()
     {
@@ -31,13 +34,45 @@ class Product extends Model
 
     public function getImageUrlAiAttribute()
     {
-        $str = $this->attributes['image'];
-        $str = explode(';', $str);
-        // 如果 image 字段本身就已经是完整的 url 就直接返回
-        if (Str::startsWith($str[1], ['http://', 'https://'])) {                    
-            return $str[1];
-        }        
-        $str = \Storage::disk('local')->url($str[1]);        
-        return $str;
+        $arr = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+        $i = 0;
+        $str = $this->attributes['nimage'];
+        $str = trim($str, "[]");
+        $str = explode(',', $str);
+        foreach($str as $value) {
+            $value = trim($value, "\"");
+            $value = explode('\\', $value);
+            $value = implode('', $value);
+            // 如果 image 字段本身就已经是完整的 url 就直接返回
+            if (Str::startsWith($value, ['http://', 'https://'])) {                    
+                return $value;
+            }        
+            $value = \Storage::disk('local')->url($value); 
+            $arr[$i] = $value;
+            $i++;
+        }
+            return $arr;        
+    }
+
+    public function getImageUrlBiAttribute()
+    {
+        $arr = array();
+        $i = 0;
+        $str = $this->attributes['introimage'];
+        $str = trim($str, "[]");
+        $str = explode(',', $str);
+        foreach($str as $value) {
+            $value = trim($value, "\"");
+            $value = explode('\\', $value);
+            $value = implode('', $value);
+            // 如果 image 字段本身就已经是完整的 url 就直接返回
+            if (Str::startsWith($value, ['http://', 'https://'])) {                    
+                return $value;
+            }        
+            $value = \Storage::disk('local')->url($value); 
+            $arr[$i] = $value;
+            $i++;
+        }
+            return $arr;        
     }
 }

@@ -77,7 +77,7 @@
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="payment">
-							<img src="img/payment.png" alt="" />
+							<img src="{{URL::asset('images/payment.png')}}" alt="" />
 						</div>
 					</div>
 				</div>

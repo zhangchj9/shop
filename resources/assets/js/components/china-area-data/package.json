@@ -1,0 +1,75 @@
+{
+  "_args": [
+    [
+      "china-area-data@^4.0.0",
+      "/var/www/html/shop"
+    ]
+  ],
+  "_from": "china-area-data@>=4.0.0 <5.0.0",
+  "_id": "china-area-data@4.0.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/china-area-data",
+  "_nodeVersion": "8.1.4",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/china-area-data-4.0.0.tgz_1505727013944_0.12933817086741328"
+  },
+  "_npmUser": {
+    "email": "airyland@qq.com",
+    "name": "airyland"
+  },
+  "_npmVersion": "5.4.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "china-area-data",
+    "raw": "china-area-data@^4.0.0",
+    "rawSpec": "^4.0.0",
+    "scope": null,
+    "spec": ">=4.0.0 <5.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/china-area-data/-/china-area-data-4.0.0.tgz",
+  "_shasum": "95c27bf4dff8b99ee92f972b1739d551da7f303b",
+  "_shrinkwrap": null,
+  "_spec": "china-area-data@^4.0.0",
+  "_where": "/var/www/html/shop",
+  "author": {
+    "name": "airyland@qq.com"
+  },
+  "dependencies": {},
+  "description": "中国省份城市区数据",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-RG9b/ic5ZIGrPXfWgeDvf1DpMZyD6jKAi5ZBjzAlt500nF5uqH9javgKC7ookGtJzFPHwc7+9hs8NRiGj+nFNw==",
+    "shasum": "95c27bf4dff8b99ee92f972b1739d551da7f303b",
+    "tarball": "https://registry.npmjs.org/china-area-data/-/china-area-data-4.0.0.tgz"
+  },
+  "gitHead": "7190f8755f126c36bb62256981ab695683ad979b",
+  "keywords": [
+    "vux",
+    "中国省份",
+    "城市",
+    "省市区",
+    "行政区域"
+  ],
+  "license": "MIT",
+  "main": "data.js",
+  "maintainers": [
+    {
+      "name": "airyland",
+      "email": "airyland@qq.com"
+    }
+  ],
+  "name": "china-area-data",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "build": "node scripts/format && node scripts/vux"
+  },
+  "version": "4.0.0"
+}

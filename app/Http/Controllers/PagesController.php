@@ -15,4 +15,15 @@ class PagesController extends Controller
     {
         return view('pages.email_verify_notice');
     }
+    public function isvipnotice(Request $request)
+    {
+        return view('pages.isvip_notice');
+    }
+    public function vipindex()
+    {
+        return view('viparea');
+    }
+    public function vipregisterindex(){
+        return view('vipregister');
+    }
 }
