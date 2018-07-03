@@ -169,6 +169,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class, //博客检索用
         Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class, //银联支付
+        Intervention\Image\ImageServiceProvider::class,//图片处理
 
         /*
          * Package Service Providers...
@@ -204,7 +205,7 @@ return [
     'aliases' => [
         'Captcha' => Mews\Captcha\Facades\Captcha::class,//图片验证码
 
-
+        'Image' => Intervention\Image\Facades\Image::class, //图片处理
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -243,5 +244,5 @@ return [
 
     ],
 
-    'order_ttl' => 1800,
+    'order_ttl' => 30,
 ];

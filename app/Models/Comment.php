@@ -76,16 +76,15 @@ class Comment extends Base
      */
     public function storeData($data)
     {
-        $user_id = session('user.id');
-        $name = session('user.name');
+        $user_id = $data->user()->id;
+        $name = $data->user()->name;
 
-        $isAdmin = OauthUser::where('id', $user_id)->value('is_admin');
         $content = $this->imageToUbb($data['content']);
         if (empty($content)) {
             return false;
         }
         $comment = array(
-            'oauth_user_id' => $user_id,
+            'user_id' => $user_id,
             'type' => 1,
             'article_id' => $data['article_id'],
             'pid' => $data['pid'],
@@ -100,50 +99,45 @@ class Comment extends Base
             return false;
         }
 
-        // 获取文章标题
-        $title = Article::where('id', $data['article_id'])
-            ->withTrashed()
-            ->value('title');
-        // 给站长发送通知邮件
-        if($isAdmin == 0){
-            $address = Config::where('name', 'EMAIL_RECEIVE')->value('value');
-            if (!empty($address)) {
-                $emailData = [
-                    'name' => '站长',
-                    'user' => $name,
-                    'date' => date('Y-m-d H:i:s'),
-                    'type' => '评论',
-                    'url' => url('article', [$data['article_id']]).'#comment-'.$id,
-                    'title' => $title,
-                    'content' => $this->ubbToImage($content)
-                ];
-                $subject = $name. '评论了 '. $title;
-                dispatch(new SendCommentEmail($address, '站长', $subject, $emailData));
-            }
-        }
-        // 给用户发送邮件通知
-        if ($data['pid']!=0) {
-            $parent_user_id = Comment::where('id', $data['pid'])->value('oauth_user_id');
-            $parentData = OauthUser::select('name', 'email')
-                ->where('id', $parent_user_id)
-                ->first()
-                ->toArray();
-            if (!empty($parentData['email'])) {
-                $emailData = [
-                    'name' => $parentData['name'],
-                    'user' => $name,
-                    'date' => date('Y-m-d H:i:s'),
-                    'type' => '回复',
-                    'url' => url('article', [$data['article_id']]).'#comment-'.$id,
-                    'title' => $title,
-                    'content' => $this->ubbToImage($content)
-                ];
-                $subject = $name. '评论了 '. $title;
-                dispatch(new SendCommentEmail($parentData['email'], $parentData['name'], $subject, $emailData));
-            }
-        }
         return $id;
     }
+
+    public function storeData_mine($request, $data)
+    {
+        $user_id = $request->user()->id;
+        $name = $request->user()->name;
+
+        $content = $this->imageToUbb($data['content']);
+        if (empty($content)) {
+            return false;
+        }
+        $comment = array(
+            'user_id' => $user_id,
+            'type' => 1,
+            'article_id' => $data['article_id'],
+            'pid' => $data['pid'],
+            'content' => $content,
+            'status' => 1
+        );
+
+        // 处理data为空的情况
+        if (empty($data)) {
+            flash_error('无需要添加的数据');
+            return false;
+        }
+        //添加数据
+        $result = $this->create($comment);
+        if ($result) {
+            // flash_success('添加成功');
+            $id = $result->id;
+        }else{
+            // flash_error('添加失败');
+            return false;
+        }
+
+        return $id;
+    }
+
 
     /**
      * 获取指定条数的最新评论
@@ -210,12 +204,12 @@ class Comment extends Base
                 });
                 foreach ($child as $m => $n) {
                     // 获取被评论人id
-                    $replyUserId = $this->where('id', $n['pid'])->pluck('oauth_user_id');
+                    $replyUserId = $this->where('id', $n['pid'])->pluck('user_id');
                     // 获取被评论人昵称
                     $oauthUserMap = [
                         'id' => $replyUserId
                     ];
-                    $child[$m]['reply_name'] = OauthUser::where($oauthUserMap)->value('name');
+                    $child[$m]['reply_name'] = User::where($oauthUserMap)->value('name');
                 }
             }
             $data[$k]['child'] = $child;
@@ -230,7 +224,7 @@ class Comment extends Base
         ];
         $child=$this
             ->select('comments.*', 'ou.name', 'ou.avatar')
-            ->join('oauth_users as ou', 'comments.oauth_user_id', 'ou.id')
+            ->join('users as ou', 'comments.user_id', 'ou.id')
             ->where($map)
             ->orderBy('created_at', 'desc')
             ->get()
@@ -246,17 +240,17 @@ class Comment extends Base
 
     }
 
-    public function getAdminList()
-    {
-        $data = $this
-            ->select('comments.*', 'a.title', 'ou.name')
-            ->join('articles as a', 'comments.article_id', 'a.id')
-            ->join('users as ou', 'comments.user_id', 'ou.id')
-            ->orderBy('comments.created_at', 'desc')
-            ->withTrashed()
-            ->paginate(15);
-        return $data;
-    }
+    // public function getAdminList()
+    // {
+    //     $data = $this
+    //         ->select('comments.*', 'a.title', 'ou.name')
+    //         ->join('articles as a', 'comments.article_id', 'a.id')
+    //         ->join('users as ou', 'comments.user_id', 'ou.id')
+    //         ->orderBy('comments.created_at', 'desc')
+    //         ->withTrashed()
+    //         ->paginate(15);
+    //     return $data;
+    // }
 
 
 

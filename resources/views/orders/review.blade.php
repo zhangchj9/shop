@@ -71,7 +71,7 @@
             <button type="submit" class="btn btn-primary center-block">提交</button>
             @else
             <!-- <a href="{{ route('orders.show', [$order->id]) }}" class="btn btn-primary">查看订单</a> -->
-            <a class="btn btn-primary" href="{{ route('orders.index') }}">返回订单列表</a>
+            <a class="btn btn-primary" href="{{ route('orders.details',['order'=>$order]) }}">返回订单列表</a>
             @endif
           </td>
         </tr>

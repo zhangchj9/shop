@@ -20,6 +20,13 @@
     },
     "dependencies": {
         "china-area-data": "^4.0.0",
+        "css-loader": "^0.28.11",
+        "gentelella": "^1.4.0",
+        "pace": "0.0.4",
+        "postcss-loader": "^2.1.5",
+        "prismjs": "^1.15.0",
+        "resolve-url-loader": "^2.3.0",
+        "sass-loader": "^7.0.3",
         "sweetalert": "^2.1.0"
     }
 }

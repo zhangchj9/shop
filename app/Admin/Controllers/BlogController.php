@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Blog;
+use App\Models\Article;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -65,7 +65,7 @@ class BlogController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(Blog::class, function (Grid $grid) {
+        return Admin::grid(Article::class, function (Grid $grid) {
             $grid->model()->orderBy('created_at', 'desc');
             $grid->id('ID')->sortable();
             $grid->title('标题');
@@ -99,18 +99,18 @@ class BlogController extends Controller
      */
     protected function form()
     {
-        return Admin::form(Blog::class, function (Form $form) {
+        return Admin::form(Article::class, function (Form $form) {
             $form->display('id', 'ID');
-            $form->text('title', '标题')->rules('required');
-            $form->text('description', '摘要')->rules('required');
-            $form->text('markdown', '正文')->rules('required');
-            $form->text('keywords', '关键词')->rules('required');
-            $form->image('cover', '封面图片')->rules('required|image');
-            $form->text('is_top', '是否置顶')->options(['1' => '是', '0'=> '否'])->default('0');
-            
             $form->display('click', '点击数');
-            $form->text('html', '链接')->rules('required');
-
+            $form->url('html', '链接')->rules('required');
+            $form->text('title', '标题')->rules('required');
+            $form->text('keywords', '关键词')->rules('required');
+            $form->text('is_top', '是否置顶')->options(['1' => '是', '0'=> '否'])->default('0');
+            $form->image('cover', '封面图片')->rules('required|image');
+            
+            $form->textarea('description', '摘要')->rows(5)->rules('required');
+            $form->editor('markdown', '正文')->rules('required');
+            
 
 
             $form->display('created_at', 'Created At');

@@ -34,7 +34,7 @@ class Product extends Model
 
     public function getImageUrlAiAttribute()
     {
-        $arr = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+        $arr = array();
         $i = 0;
         $str = $this->attributes['nimage'];
         $str = trim($str, "[]");

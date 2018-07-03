@@ -20,7 +20,7 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $cartItems = $this->cartService->get();
-        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->take(1)->get();
+        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
 
         return view('cart.index', ['cartItems' => $cartItems, 'addresses' => $addresses]);
     }

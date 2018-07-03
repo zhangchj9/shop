@@ -28,45 +28,35 @@
                 <a class="popup-link" href="{{ $product->image_url }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
               </div>
             </div>
-            <div class="tab-pane" id="profile">
+            <?php
+            $temp="ttt";
+            ?>
+            @foreach($product->image_url_ai as $img)
+            <div class="tab-pane" id="{{$temp}}">
               <div class="pro-large-img">
-                <img src="{{ $product->image_url_ai[0] }}" alt="" />
-                <a class="popup-link" href="{{ $product->image_url_ai[0] }}">View larger <i class="fa fa-search-plus" aria-hidden="false"></i></a>
+                <img src="{{ $img }}" alt="" />
+                <a class="popup-link" href="{{ $img }}">View larger <i class="fa fa-search-plus" aria-hidden="false"></i></a>
               </div>
             </div>
-            <div class="tab-pane" id="messages">
-              <div class="pro-large-img">
-                <img src="{{ $product->image_url_ai[1] }}" alt="" />
-                <a class="popup-link" href="{{ $product->image_url_ai[1] }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
-              </div>
-            </div>
-            <div class="tab-pane" id="settings">
-              <div class="pro-large-img">
-                <img src="{{ $product->image_url_ai[2] }}" alt="" />
-                <a class="popup-link" href="{{ $product->image_url_ai[2] }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
-              </div>
-            </div>
-            <div class="tab-pane" id="settings2">
-              <div class="pro-large-img">
-                <img src="{{ $product->image_url_ai[3] }}" alt="" />
-                <a class="popup-link" href="{{ $product->image_url_ai[3] }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
-              </div>
-            </div>
-            <div class="tab-pane" id="settings3">
-              <div class="pro-large-img">
-                <img src="{{ $product->image_url_ai[4] }}" alt="" />
-                <a class="popup-link" href="{{ $product->image_url_ai[4] }}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
-              </div>
-            </div>
+            <?php
+            $temp=$temp."t";
+            ?>
+            @endforeach
+            
           </div>
           <!-- Nav tabs -->
           <ul class="details-tab">
             <li class="active"><a href="#home" data-toggle="tab"><img src="{{ $product->image_url }}" alt="" /></a></li>
-            <li><a href="#profile" data-toggle="tab"><img src="{{ $product->image_url_ai[0] }}" alt="" /></a></li>
-            <li><a href="#messages" data-toggle="tab"><img src="{{ $product->image_url_ai[1] }}" alt="" /></a></li>
-            <li><a href="#settings" data-toggle="tab"><img src="{{ $product->image_url_ai[2] }}" alt="" /></a></li>
-            <li><a href="#settings2" data-toggle="tab"><img src="{{ $product->image_url_ai[3] }}" alt="" /></a></li>
-            <li><a href="#settings3" data-toggle="tab"><img src="{{ $product->image_url_ai[4] }}" alt="" /></a></li>
+            <?php
+            $temp2="ttt";
+            ?>
+            @foreach($product->image_url_ai as $img)
+            <li><a href="#{{$temp2}}" data-toggle="tab"><img src="{{ $img }}" alt="" /></a></li>
+            <?php
+            $temp2=$temp2."t";
+            ?>
+            @endforeach
+            
           </ul>
         </div>
       </div>

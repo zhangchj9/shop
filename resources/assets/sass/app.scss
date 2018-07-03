@@ -8,6 +8,17 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+// Used for blog
+@import "./home/index.scss";
+
+@import "~prismjs/themes/prism-okaidia.css";
+@import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
+@import "~prismjs/plugins/toolbar/prism-toolbar.css";
+@import "~prismjs/plugins/previewers/prism-previewers.css";
+@import "~prismjs/plugins/command-line/prism-command-line.css";
+
+// @import "~pace/themes/blue/pace-theme-flash.css";
+
 // 通用样式
 body {
     font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial,sans-serif;

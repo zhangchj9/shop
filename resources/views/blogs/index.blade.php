@@ -1,5 +1,4 @@
-{{-- /var/www/html/shop/resources/views/blogs/ --}}
-@extends('layouts.app')
+@extends('layouts.blayout')
 @section('title', '博客列表')
 @section('content')
 <div class="space-custom"></div>
@@ -55,7 +54,7 @@
                         <h3 class="sidebar-title">Recommended</h3>
                         <p class="b-recommend-p">
                             @foreach($topArticle as $v)
-                                <a class="b-recommend-a" href="{{ url('blog', [$v->id]) }}" target="_blank"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
+                                <a class="b-recommend-a" href="{{ url('blog', [$v->id]) }}" target="_blank"><span class="fa fa-th-list b-black"> {{ $v->title }} </span></a>
                             @endforeach
                         </p>
                     </div>
@@ -65,7 +64,10 @@
                         <div>
                             @foreach($newComment as $v)
                                 <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
-                                    {{-- <img class="b-head-img js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($v->avatar) }}" alt="{{ $v->name }}"> --}}
+                                    @guest
+                                    @else
+                                        <img class="img-responsive img-circle" width="30px" height="30px" src="{{ asset($v->avatar) }}"  alt="{{ $v->name }}">
+                                    @endguest
                                     <li class="b-nickname">
                                         {{ $v->name }} -- <span>{{ word_time($v->created_at) }}</span>
                                     </li>
@@ -73,7 +75,7 @@
                                         在<a href="{{ url('blog', [$v->article_id]) }}" target="_blank">{{ $v->title }}</a>中评论：
                                     </li>
                                     <li class="b-content">
-                                        {!! $v->content !!}
+                                        {!! $v->content !!} 
                                     </li>
                                 </ul>
                             @endforeach
@@ -88,14 +90,14 @@
                 @if(!empty($tagName))
                     <div class="row b-tag-title">
                         <div class="col-xs-12 col-md-12 col-lg-12">
-                            <h2>拥有<span class="b-highlight">{{ $tagName }}</span>标签的文章</h2>
+                            <h2>拥有<span class="b-highlight">{{ $tagName }}</span>标签的博客</h2>
                         </div>
                     </div>
                 @endif
                 @if(request()->has('wd'))
                     <div class="row b-tag-title">
                         <div class="col-xs-12 col-md-12 col-lg-12">
-                            <h2>搜索到的与<span class="b-highlight">{{ request()->input('wd') }}</span>相关的文章</h2>
+                            <h2>与“<span class="b-highlight">{{ request()->input('wd') }}</span>”相关的检索结果</h2>
                         </div>
                     </div>
                 @endif
@@ -138,7 +140,12 @@
                                 <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs">
                                     <figure class="b-oa-pic b-style1">
                                         <a href="{{ url('blog', $v->id) }}" target="_blank">
-                                            <img src="{{ asset($v->cover) }}" alt="{{ $config['IMAGE_TITLE_ALT_WORD'] }}" title="{{ $config['IMAGE_TITLE_ALT_WORD'] }}">
+                                            <?php 
+                                                $prefix = "storage/";
+                                                $postfix = $v->cover;
+                                                $srcLink = $prefix.$postfix;
+                                            ?>
+                                            <img src="{!! $srcLink !!}" alt="{{ $config['IMAGE_TITLE_ALT_WORD'] }}" title="{{ $config['IMAGE_TITLE_ALT_WORD'] }}">
                                         </a>
                                         <figcaption>
                                             <a href="{{ url('blog', [$v->id]) }}" target="_blank"></a>

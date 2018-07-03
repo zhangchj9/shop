@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Auth;
 use App\Http\Requests\Comment\Store;
+use App\Models\OauthUser;
 use App\Models\Category;
 use App\Models\Article;
 use App\Models\ArticleTag;
@@ -11,12 +13,168 @@ use App\Models\Comment;
 use App\Models\Config;
 use App\Models\User;
 use App\Models\Tag;
+use App\Models\Product;
+use DB;
 use Cache;
 
 class IndexController extends Controller
 {
-    public function index(){
-        return view('index');
+    public function index(Request $request){
+        $id = "000";        
+        $builder = Product::query()->where('on_sale', true);
+            $foryou = $builder
+                    -> orderBy(\DB::raw('RAND()'))
+                    -> take(5)
+                    -> get();
+        if($request->user()) {
+            $id = $request->user()->id;
+            $person = DB::table('personalizations')->where('user_id', $id)->value('id');            
+        }        
+        $id = "000";  
+        if($request->user() && $person) {      //个性化推荐算法
+        $id = $request->user()->id;
+        $brand = DB::table('personalizations')->where('user_id', $id)->value('brand');
+        $brand = '%'.$brand.'%';
+        $photo = DB::table('personalizations')->where('user_id', $id)->value('photo');
+        $memosize = DB::table('personalizations')->where('user_id', $id)->value('memorysize');
+        $screensize = DB::table('personalizations')->where('user_id', $id)->value('screensize');
+        $ram = DB::table('personalizations')->where('user_id', $id)->value('ram');
+        $builder = Product::query()->where('on_sale', true);
+        $first = $builder->WhereHas('skus', function ($query) use ($brand) {
+                        $query->Where('param', 'like', $brand);
+                    });
+        $builder = Product::query()->where('on_sale', true);
+        $second = $builder->WhereHas('skus', function ($query) use ($brand) {
+                        $query->Where('param', 'not like', $brand);
+                    });
+        
+        if($screensize=='0') {}
+        if($screensize=='1') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv1%')
+                        ->orWhere('param', 'like', '%z_lv2%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv1%')
+                        ->orWhere('param', 'like', '%z_lv2%');
+                    });
+        }
+        if($screensize=='2') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv3%')
+                        ->orWhere('param', 'like', '%z_lv4%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv3%')
+                        ->orWhere('param', 'like', '%z_lv4%');
+                    });
+        }
+        if($screensize=='3') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv5%')
+                        ->orWhere('param', 'like', '%z_lv6%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv5%')
+                        ->orWhere('param', 'like', '%z_lv6%');
+                    });
+        }
+        if($photo=='0') {}
+        if($photo=='1') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%b_lv3%')
+                        ->orWhere('param', 'like', '%b_lv4%')
+                        ->orWhere('param', 'like', '%b_lv5%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%b_lv3%')
+                        ->orWhere('param', 'like', '%b_lv4%')
+                        ->orWhere('param', 'like', '%b_lv5%');
+                    });
+        }
+        if($photo=='2') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%b_lv4%')
+                        ->orWhere('param', 'like', '%b_lv5%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%b_lv4%')
+                        ->orWhere('param', 'like', '%b_lv5%');
+                    });
+        }
+        if($memosize=='0') {}
+        if($memosize=='1') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：128GB%')
+                        ->orWhere('param', 'like', '%机身存储：256GB%')
+                        ->orWhere('param', 'like', '%机身存储：512GB%')
+                        ->orWhere('param', 'like', '%d_up%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：128GB%')
+                        ->orWhere('param', 'like', '%机身存储：256GB%')
+                        ->orWhere('param', 'like', '%机身存储：512GB%')
+                        ->orWhere('param', 'like', '%d_up%');
+                    });
+        }
+        if($memosize=='2') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：256GB%')
+                        ->orWhere('param', 'like', '%机身存储：512GB%')
+                        ->orWhere('param', 'like', '%d_up%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：256GB%')
+                        ->orWhere('param', 'like', '%机身存储：512GB%')
+                        ->orWhere('param', 'like', '%d_up%');
+                    });
+        }
+        if($ram=='0') {}
+        if($ram=='1') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%内存：4GB%')
+                        ->orWhere('param', 'like', '%内存：6GB%')
+                        ->orWhere('param', 'like', '%内存：8GB%')
+                        ->orWhere('param', 'like', '%m_up%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%内存：4GB%')
+                        ->orWhere('param', 'like', '%内存：6GB%')
+                        ->orWhere('param', 'like', '%内存：8GB%')
+                        ->orWhere('param', 'like', '%m_up%');
+                    });
+        }
+        if($ram=='2') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%内存：6GB%')
+                        ->orWhere('param', 'like', '%内存：8GB%')
+                        ->orWhere('param', 'like', '%m_up%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%内存：6GB%')
+                        ->orWhere('param', 'like', '%内存：8GB%')
+                        ->orWhere('param', 'like', '%m_up%');
+                    });
+        }
+        $foryou = $first->union($second);
+        $foryou = $foryou->get();
+        }
+        $builder = Product::query()->where('on_sale', true);
+        $rans = $builder
+                    -> orderBy(\DB::raw('RAND()'))
+                    -> take(5)
+                    -> get();
+        $builder = Product::query()->where('on_sale', true);
+        $top5 = $builder
+                    -> orderBy('sold_count','desc')
+                    -> take(5)
+                    -> get();
+        return view('index', [
+            'idd' => $id,
+            'foryou' => $foryou,
+            'rans' => $rans,
+            'top5' => $top5
+        ]);
     }
 
     /**
@@ -50,25 +208,35 @@ class IndexController extends Controller
 		return view('blogs.index', $assign);
     }
     
-    public function test(Article $articleModel) {
-	    // 获取文章列表数据
+
+    public function search_test(Request $request){
+        $wd = clean($request->input('wd')); // 这里返回的东西带有html标签
+
+        $wd = strip_tags($wd);
+        $id = Article::search($wd)->keys();
+
+        // dd($id);
+        // 获取文章列表数据
         $article = Article::select('id', 'category_id', 'title', 'admin_id', 'description', 'cover', 'created_at')
+            ->whereIn('id', $id)
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])
             ->paginate(10);
-        $config = cache('config'); // 这个config是一个全局缓存
         $head = [
-            'title' => $config->get('WEB_TITLE'),
-            'keywords' => $config->get('WEB_KEYWORDS'),
-            'description' => $config->get('WEB_DESCRIPTION'),
+            'title' => $wd,
+            'keywords' => '',
+            'description' => '',
         ];
         $assign = [
+            'id' => $id,
+            'wd' => $wd,
             'category_id' => 'index',
             'article' => $article,
-            'head' => $head,
-            'tagName' => ''
-        ];                   
-        return view('blogs.test', $assign);
+            'tagName' => '',
+            'title' => $wd,
+            'head' => $head
+        ];
+        return view('blogs.show', $assign);
     }
 
 
@@ -208,26 +376,26 @@ class IndexController extends Controller
      *
      * @param Comment $commentModel
      */
-    public function comment(Store $request, Comment $commentModel, OauthUser $oauthUserModel)
+    public function comment(Request $request ,Store $store, Comment $commentModel, OauthUser $oauthUserModel)
     {
-        $data = $request->only('content', 'article_id', 'pid');
-        // 获取用户id
-        $userId = session('user.id');
+        $data = $store->only('content', 'article_id', 'pid');
+        // // 获取用户id
+        // $userId = session('user.id');
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
-        $email = $request->input('email');
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
-            // 修改邮箱
-            $oauthUserMap = [
-                'id' => $userId
-            ];
-            $oauthUserData = [
-                'email' => $email
-            ];
-            $oauthUserModel->updateData($oauthUserMap, $oauthUserData);
-            session(['user.email' => $email]);
-        }
+        // $email = $request->input('email');
+        // if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
+        //     // 修改邮箱
+        //     $oauthUserMap = [
+        //         'id' => $userId
+        //     ];
+        //     $oauthUserData = [
+        //         'email' => $email
+        //     ];
+        //     $oauthUserModel->updateData($oauthUserMap, $oauthUserData);
+        //     session(['user.email' => $email]);
+        // }
         // 存储评论
-        $id = $commentModel->storeData($data);
+        $id = $commentModel->storeData_mine($request,$data); // 调用Comment.php的storeData_mine()函数
         // 更新缓存
         Cache::forget('common:newComment');
         return ajax_return(200, ['id' => $id]);
@@ -236,9 +404,9 @@ class IndexController extends Controller
     /**
      * 检测是否登录
      */
-    public function checkLogin()
+    public function checkLogin(Request $request)
     {
-        if (empty(session('user.id'))) {
+        if (is_null($request->user()->id)) {
             return 0;
         } else {
             return 1;
@@ -255,11 +423,12 @@ class IndexController extends Controller
      */
     public function search(Request $request){
         $wd = clean($request->input('wd'));
+        $wd = strip_tags($wd); // 去除通过检索框传进来的html标签
         $id = Article::search($wd)->keys();
 
         // dd($id);
         // 获取文章列表数据
-        $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
+        $article = Article::select('id', 'category_id', 'title', 'admin_id', 'description', 'cover', 'created_at')
             ->whereIn('id', $id)
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])

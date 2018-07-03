@@ -36,7 +36,6 @@ class OrderService
             // 订单关联到当前用户
             $order->user()->associate($user);
             // 写入数据库
-            $order->update(['closed' => 0]);
             $order->save();
 
             $totalAmount = 0;
@@ -79,7 +78,7 @@ class OrderService
         });
 
         // 这里我们直接使用 dispatch 函数
-        dispatch(new CloseOrder($order, config('app.order_ttl')));
+        
 
         return $order;
     }

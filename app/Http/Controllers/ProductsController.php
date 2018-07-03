@@ -171,7 +171,7 @@ class ProductsController extends Controller
 
         $count = $builder->count();
 
-        $products = $builder->paginate(15);
+        $products = $builder->orderBy('created_at', 'desc')->paginate(9);
 
         return view('products.index', [
             'counts' => $count,
@@ -206,6 +206,7 @@ class ProductsController extends Controller
             $id = $request->user()->id;
             $person = DB::table('personalizations')->where('user_id', $id)->value('id');            
         }        
+        $id = "000";  
         if($request->user() && $person) {      //个性化推荐算法
         $id = $request->user()->id;
         $brand = DB::table('personalizations')->where('user_id', $id)->value('brand');
@@ -222,73 +223,116 @@ class ProductsController extends Controller
         $second = $builder->WhereHas('skus', function ($query) use ($brand) {
                         $query->Where('param', 'not like', $brand);
                     });
-        $foryou = $first->unionall($second);
-        if($screensize==0) {}
-        else if($screensize==1) {
-            $foryou = $foryou->WhereHas('skus', function ($query) {
+        
+        if($screensize=='0') {}
+        if($screensize=='1') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv1%')
+                        ->orWhere('param', 'like', '%z_lv2%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
                         $query->Where('param', 'like', '%z_lv1%')
                         ->orWhere('param', 'like', '%z_lv2%');
                     });
         }
-        else if($screensize==2) {
-            $foryou = $foryou->WhereHas('skus', function ($query) {
+        if($screensize=='2') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv3%')
+                        ->orWhere('param', 'like', '%z_lv4%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
                         $query->Where('param', 'like', '%z_lv3%')
                         ->orWhere('param', 'like', '%z_lv4%');
                     });
         }
-        else if($screensize==3) {
-            $foryou = $foryou->WhereHas('skus', function ($query) {
+        if($screensize=='3') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%z_lv5%')
+                        ->orWhere('param', 'like', '%z_lv6%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
                         $query->Where('param', 'like', '%z_lv5%')
                         ->orWhere('param', 'like', '%z_lv6%');
                     });
         }
-        if($photo==0) {}
-        else if($photo==1) {
-            $foryou = $foryou->WhereHas('skus', function ($query) {
+        if($photo=='0') {}
+        if($photo=='1') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%b_lv3%')
+                        ->orWhere('param', 'like', '%b_lv4%')
+                        ->orWhere('param', 'like', '%b_lv5%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
                         $query->Where('param', 'like', '%b_lv3%')
                         ->orWhere('param', 'like', '%b_lv4%')
                         ->orWhere('param', 'like', '%b_lv5%');
                     });
         }
-        else if($photo==2) {
-            $foryou = $foryou->WhereHas('skus', function ($query) {
+        if($photo=='2') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%b_lv4%')
+                        ->orWhere('param', 'like', '%b_lv5%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
                         $query->Where('param', 'like', '%b_lv4%')
                         ->orWhere('param', 'like', '%b_lv5%');
                     });
         }
-        if($memosize==0) {}
-        else if($memosize==1) {
-            $foryou = $foryou->WhereHas('skus', function ($query) {
-                        $query->Where('param', 'like', '%机身存储：32GB%')
-                        ->orWhere('param', 'like', '%机身存储：64GB%')
-                        ->orWhere('param', 'like', '%机身存储：128GB%')
+        if($memosize=='0') {}
+        if($memosize=='1') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：128GB%')
+                        ->orWhere('param', 'like', '%机身存储：256GB%')
+                        ->orWhere('param', 'like', '%机身存储：512GB%')
+                        ->orWhere('param', 'like', '%d_up%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：128GB%')
                         ->orWhere('param', 'like', '%机身存储：256GB%')
                         ->orWhere('param', 'like', '%机身存储：512GB%')
                         ->orWhere('param', 'like', '%d_up%');
                     });
         }
-        else if($memosize==2) {
-            $foryou = $foryou->WhereHas('skus', function ($query) {
-                        $query->Where('param', 'like', '%机身存储：128GB%')                        
-                        ->orWhere('param', 'like', '%机身存储：256GB%')
+        if($memosize=='2') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：256GB%')
+                        ->orWhere('param', 'like', '%机身存储：512GB%')
+                        ->orWhere('param', 'like', '%d_up%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%机身存储：256GB%')
                         ->orWhere('param', 'like', '%机身存储：512GB%')
                         ->orWhere('param', 'like', '%d_up%');
                     });
         }
-        if($ram==0) {}
-        else if($ram==1) {
-            $foryou = $foryou->WhereHas('skus', function ($query) {
-                        $query->Where('param', 'not like', '%m_down%');
+        if($ram=='0') {}
+        if($ram=='1') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%内存：4GB%')
+                        ->orWhere('param', 'like', '%内存：6GB%')
+                        ->orWhere('param', 'like', '%内存：8GB%')
+                        ->orWhere('param', 'like', '%m_up%');
                     });
-        }
-        else if($ram==2) {
-            $foryou = $foryou->WhereHas('skus', function ($query) {
+            $second = $second->WhereHas('skus', function ($query) {
                         $query->Where('param', 'like', '%内存：4GB%')
                         ->orWhere('param', 'like', '%内存：6GB%')
                         ->orWhere('param', 'like', '%内存：8GB%')
                         ->orWhere('param', 'like', '%m_up%');
                     });
         }
+        if($ram=='2') {
+            $first = $first->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%内存：6GB%')
+                        ->orWhere('param', 'like', '%内存：8GB%')
+                        ->orWhere('param', 'like', '%m_up%');
+                    });
+            $second = $second->WhereHas('skus', function ($query) {
+                        $query->Where('param', 'like', '%内存：6GB%')
+                        ->orWhere('param', 'like', '%内存：8GB%')
+                        ->orWhere('param', 'like', '%m_up%');
+                    });
+        }
+        $foryou = $first->union($second);
         $foryou = $foryou->get();
         }
         $builder = Product::query()->where('on_sale', true);

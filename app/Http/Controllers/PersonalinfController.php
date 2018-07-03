@@ -15,20 +15,48 @@ class PersonalinfController extends Controller
     }
     public function uploads(Request $request)
     {
-        //DB::update('update users set name=? where id =?',[$request->newname,$request->user()->id]);
-
-        $file = $request->file('newavatar');
-        if ($file->isValid()) {
-            $ext = $file->getClientOriginalExtension();
-            //获取文件的绝对路径
-            $path = $file->getRealPath();
-            //定义文件名
-            $filename = date('Y-m-d-h-i-s').'.'.$ext;
-            //存储文件。disk里面的public。总的来说，就是调用disk模块里的public配置
-            // Storage::disk('public')->put($filename, file_get_contents($path));
-            $file->move('./images',$filename);
+        $notice='保存成功';
+        if(!is_null($request->newname))
+        {
+                DB::update('update users set name=? where id =?',[$request->newname,$request->user()->id]);
         }
-        return view('index');
+        
+        // dd($request->file('newavatar'));
+        if ($request->hasFile('newavatar'))
+        {     
+                $file = $request->file('newavatar');
+                $ext = $file->getClientOriginalExtension();
+                
+                if(in_array($ext,['jpeg','jpg','png','gpeg']))
+                {
+                        $size=$file->getSize();
+                        if($size>2*1024*1024)
+                        {
+                                $notice='图片不能大于2M';
+                        }
+                        else{
+                                $filename = 'images/'.date('Y-m-d-h-i-s').'.'.$ext;
+                //         //存储文件。disk里面的public。总的来说，就是调用disk模块里的public配置
+                //         // Storage::disk('public')->put($filename, file_get_contents($path));
+                                $file->move('./images',$filename);
+                        // Storage::disk('public')->put('$filename', 'Contents');
+                                DB::update('update users set avatar=? where id =?',[$filename,$request->user()->id]);
+                        }
+                       
+                }
+                else{
+                        $notice='图片格式不正确';
+                }
+        }
+                
+        
+        return view('pages.notice_for_personalinf',['msg' => $notice]);
+        // else{echo "das";}
+        
+    // }
+        // return redirect('personalinf')->with("success",'操作成功');
+        
+        
 
         // $folder = 'Uploads/'.date('Ymd');
         // $newFileName = md5(microtime()) . '.' . $file->getClientOriginalExtension();        

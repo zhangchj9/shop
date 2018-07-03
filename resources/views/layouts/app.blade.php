@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<html xmlns:wb="http://open.weibo.com/wb">
 
 <head>
     <meta charset="utf-8">
@@ -9,11 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- favicon============================================ --> 
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="/image/x-icon" href="/images/favicon.ico">
     
     <!-- All css files are included here. -->
     <!-- Bootstrap framework main css -->
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     
@@ -34,15 +35,7 @@
     
     <link rel="stylesheet" href="/css/custom.css">
     
-    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script> <!-- 加载微博登陆、点赞、分享等功能的必备脚本 -->
-    <!-- Modernizr JS -->
-    <!-- <script src="vue.js"></script> -->
-    <!-- <script src="/js/app.js"></script> -->
-    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
-    <!-- <script src="/app.js"></script> -->
-    
-    <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
-    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
+
     
 </head>
 <body>
@@ -101,17 +94,20 @@
             </div>
         </div>
     </div>
+
     <!-- JS 脚本 -->
     <!-- jquery latest version -->
-    <!-- <script src="/js/app.js"></script> -->
-    <!-- <script src="/app.js"></script> -->
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script> <!-- 加载微博登陆、点赞、分享等功能的必备脚本 -->
+    <!-- Modernizr JS -->
+    <!-- <script src="vue.js"></script> -->
+    <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
     
     <!-- <script src="js/app.js"></script> -->
     <script src="/js/vendor/jquery-1.12.0.min.js"></script>
 
     
     <!-- Bootstrap framework js -->
-    <!-- <script src="js/app.js"></script> -->
     <script src="/js/bootstrap.min.js"></script>
 
     <!-- ajax-mail js -->
@@ -131,14 +127,7 @@
     <script src="/js/plugins.js"></script>
 
     <!-- Main js file that contents all jQuery plugins activation. -->
-    <script src="/js/main.js"></script>
-    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
-
-    <!-- <script src="/js/app.js"></script> -->
-    <script src="{{ mix('js/app.js') }}"></script>
-    <script src="{{URL::asset('js/blogs/index.js')}}"></script>
-    <script src="{{URL::asset('js/blogs/comment.js')}}"></script>
-        
+    <script src="/js/main.js"></script>        
     @yield('scriptsAfterJs')
 </body>
 

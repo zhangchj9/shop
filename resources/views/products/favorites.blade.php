@@ -28,10 +28,23 @@
                     <td class="product-thumbnail"><a href="{{ route('products.show', ['product' => $product->id]) }}">
                     <img src="{{ $product->image_url }}" alt="" /></a></td>
                     <td class="product-name"><a href="{{ route('products.show', ['product' => $product->id]) }}">{{ $product->title }}</a></td>                  
-                    <td class="product-price"><span class="amount">最低价：<b>￥</b>
+                    <td class="product-price"><span class="amount">低至：<b>￥</b>
                      {{ DB::table('product_skus')->where('id', DB::table('product_skus')->where('product_id', $product->id)->value('id'))->value('price')}}
                     </span></td>
-                    @if($product->on_sale == 1)
+                    <?php
+                    $onsale=0;
+                    $arr=array();
+                    $i=1;
+                    $temp = DB::table('product_skus')->where('product_id',$product->id)->select('stock')->get();
+                    foreach($temp as $te) {                      
+                      $arr[$i]= ($te)->stock; 
+                      if($arr[$i]!= 0) {
+                        $onsale=1;
+                      }
+                      $i=$i+1;
+                    }
+                     ?>
+                    @if($onsale == 1)
                     <td class="product-stock-status"><span class="wishlist-in-stock">有货</span></td>
                     @else
                     <td class="product-stock-status"><span class="wishlist-in-stock">无货</span></td>
@@ -48,4 +61,5 @@
     </div>
   </div>
 </div>
+<br><br><br><br><br><br><br><br><br><br>
 @endsection

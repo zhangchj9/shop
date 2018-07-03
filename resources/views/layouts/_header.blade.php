@@ -11,15 +11,15 @@
                             <nav>
                                 <ul>
                                 @guest
-                                    <li><a href="{{ route('root') }}">Home</a></li>
-                                    <li><a href="{{ route('products.index') }}">Product</a></li>
-                                    <li><a href="{{ route('blogs.index') }}">Blog</a></li>
+                                    <li><a href="{{ route('root') }}">首页</a></li>
+                                    <li><a href="{{ route('products.index') }}">商品</a></li>
+                                    <li><a href="{{ route('blogs.index') }}">博客</a></li>
                                     <li><a href="{{ route('login') }}">Login</a></li>
                                     <li><a href="{{ route('register') }}">Register</a></li>
                                 @else
-                                    <li><a href="{{ route('root') }}">Home</a></li>
-                                    <li><a href="{{ route('products.index') }}">Product</a>
-                                        <div class="mega-menu">
+                                    <li><a href="{{ route('root') }}">首页</a></li>
+                                    <li><a href="{{ route('products.index') }}">商品</a>
+                                        <!-- <div class="mega-menu">
                                             <ul>
                                                 <li class="mega-title"><a href="#">Brand</a></li>
                                                 <li><a href="#">Apple</a></li>
@@ -44,10 +44,10 @@
                                                 <li><a href="#">OPPO R5</a></li>
                                                 <li><a href="#"></a></li>
                                             </ul>
-                                        </div>
+                                        </div> -->
                                     </li>
-                                    <li><a href="{{ route('blogs.index') }}">Blog</a>
-                                        <div class="mega-menu mega-2-col">
+                                    <li><a href="{{ route('blogs.index') }}">博客</a>
+                                        <!-- <div class="mega-menu mega-2-col">
                                             <ul>
                                                 <li class="mega-title"><a href="#">Shortcode-01</a></li>
                                                 <li><a href="elements-alerts.html">alerts</a></li>
@@ -70,7 +70,7 @@
                                                 <li><a href="elements-testimonial.html">testimonial</a></li>
                                                 <li><a href="elements-carousel-tab.html">carousel with tab</a></li>
                                             </ul>
-                                        </div>                                  
+                                        </div>                                   -->
                                     </li>
                                     <li><a href="{{route('vip_page')}}">VIP</a>
                                         <!-- <div class="mega-menu">
@@ -100,11 +100,11 @@
                                             </ul>
                                         </div>                                   -->
                                     </li>
-                                    <li><a href="#">What's New</a></li>
+                                    <!-- <li><a href="#">What's New</a></li> -->
                                     <li>
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                                    <img src="{{ Auth::user()->avatar }}" class="img-responsive img-circle" width="30px" height="30px">
+                                                    <img src="{{ URL::asset(Auth::user()->avatar) }}" class="img-responsive img-circle" width="30px" height="30px">
                                             </span>
                                             {{ Auth::user()->name }} <span class="caret"></span>
                                         </a>
@@ -121,6 +121,9 @@
                                             <li>
                                                 <a href="{{ route('products.favorites') }}"><font size="3">我的收藏</font></a>
                                             </li>
+                                            <li>
+                                                <a href="{{ route('questionnaire.index') }}"><font size="3">我的偏好</font></a>
+                                            </li>                                            
                                             <li>
                                                 <a href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -147,10 +150,10 @@
                             </div> 
                         </div>
 
-                        {{-- 购物车相关信息 --}}
+                        {{-- 购物车相关信息  --}}
                         <div class="shopping-cart ml-20 display-inline">
-                            <a href="{{ route('cart.index') }}"><b>shopping cart</b>(2)</a>
-                            <ul>
+                            <a href="{{ route('cart.index') }}"><b>shopping cart</b></a>
+                            <!-- <ul>
                                 <li>
                                     <div class="cart-img">
                                         <a href="#"><img src="images/cart/1.jpg" alt="" /></a>
@@ -189,7 +192,7 @@
                                     </div>
                                 </li>
                                 <li class="checkout m-0"><a href="#">checkout <i class="fa fa-angle-right"></i></a></li>
-                            </ul>                           
+                            </ul>  -->                          
                         </div>
                         
                     </div>
@@ -203,16 +206,16 @@
                         <div class="mobile-menu">
                             <nav id="mobile-menu-active">
                                 <ul>
-                                    <li><a href="#">Home</a>
-                                        <ul>
+                                    <li><a href="{{ route('root') }}">首页</a>
+                                        <!-- <ul>
                                             <li><a href="index.html">home version 1</a></li>
                                             <li><a href="index-2.html">home version 2</a></li>
                                             <li><a href="index-3.html">home version 3</a></li>
                                             <li><a href="index-4.html">home version 4</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
-                                    <li><a href="shop.html">Sofa</a>
-                                        <ul>
+                                    <li><a href="{{ route('products.index') }}">商品</a>
+                                        <!-- <ul>
                                             <li><a href="#">Bras & Tanks</a></li>
                                             <li><a href="#">Trousers</a></li>
                                             <li><a href="#">Hoodies & Sweatshirts</a></li>
@@ -228,10 +231,10 @@
                                             <li><a href="#">shorts</a></li>
                                             <li><a href="#">suits</a></li>
                                             <li><a href="#">jackets</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
-                                    <li><a href="#">Elements</a>
-                                        <ul>
+                                    <li><a href="{{ route('blogs.index') }}">博客</a>
+                                        <!-- <ul>
                                             <li><a href="elements-alerts.html">alerts</a></li>
                                             <li><a href="elements-banner1.html">banner 1</a></li>
                                             <li><a href="elements-banner2.html">banner 2</a></li>
@@ -249,10 +252,10 @@
                                             <li><a href="elements-social-icon.html">social icon</a></li>
                                             <li><a href="elements-testimonial.html">testimonial</a></li>
                                             <li><a href="elements-carousel-tab.html">carousel with tab</a></li>
-                                        </ul>                               
+                                        </ul>                                -->
                                     </li>
-                                    <li><a href="shop.html">Lighting</a>
-                                        <ul>
+                                    <li><a href="{{route('vip_page')}}">VIP</a>
+                                        <!-- <ul>
                                             <li><a href="#">Bras & Tanks</a></li>
                                             <li><a href="#">Trousers</a></li>
                                             <li><a href="#">Hoodies & Sweatshirts</a></li>
@@ -268,9 +271,9 @@
                                             <li><a href="#">shorts</a></li>
                                             <li><a href="#">suits</a></li>
                                             <li><a href="#">jackets</a></li>
-                                        </ul>                               
+                                        </ul>                                -->
                                     </li>
-                                    <li><a href="#">Pages</a>
+                                    <!-- <li><a href="#">Pages</a>
                                         <ul>
                                             <li><a href="blog.html">blog</a></li>
                                             <li><a href="blog-details.html">blog details</a></li>
@@ -284,8 +287,8 @@
                                             <li><a href="shop.html">shop</a></li>
                                             <li><a href="wishlist.html">wishlist</a></li>
                                         </ul>
-                                    </li>
-                                    <li><a href="#">What's New</a></li>
+                                    </li> -->
+                                    <!-- <li><a href="#">What's New</a></li> -->
                                 @endguest
                                 </ul>
                             </nav>                          

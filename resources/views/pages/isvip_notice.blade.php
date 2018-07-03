@@ -22,7 +22,7 @@
                 <h6>您还不是VIP，不能进入该区域!</h6>
                 <br><br><br>
                 <em><font size="5" color="#FFD700">VIP会员享有购物返现、优惠券赠送、VIP商品尊享等权益，只需60元每月哦!</font></em>
-                <input type="file" name="photo"/>
+                
                 <br><br><br>
                 <div class="clear"></div>
                 <a class="btn btn-primary" href="{{ route('vipregister') }}">前去注册</a>

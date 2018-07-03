@@ -7,8 +7,8 @@
 	<div class="breadcrumb-area">
 		<div class="container">
 			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-home"></i></a></li>
-				<li><a href="#">Shop</a></li>
+				<li><a href="{{route('root')}}"><i class="fa fa-home"></i></a></li>
+				<li><a href="{{route('products.index')}}"> 商品</a></li>
 				<li class="active">Checkout</li>
 			</ol>
 		</div>
@@ -47,11 +47,11 @@
 							<div class="col-md-8 col-sm-7 col-xs-12">
 								@if($order->paid_at)
 									@if($order->refund_status === \App\Models\Order::REFUND_STATUS_PENDING)
-										<a class="btn btn-primary btn-xs" href="{{ route('orders.show', ['order' => $order->id]) }}" id="refund">申请退款</a>
+										<a class="btn btn-primary btn-xs" id="refund">申请退款</a>
 										@if($order->reviewd)
-										    <a class="btn btn-primary btn-xs" href="{{ route('orders.review.show')}}" id="review">查看评价</a>
-										@else
-											<a class="btn btn-primary btn-xs" id="sendreview">提交评价</a>
+										    <a class="btn btn-primary btn-xs" href="{{ route('orders.review.show',['order'=>$order])}}" id="review">评价</a>
+										@else 
+										    <a class="btn btn-primary btn-xs" href="{{ route('orders.review.show',['order'=>$order])}}" id="sendreview">提交评价</a>
 										@endif
 									@else
 										<a class="btn btn-primary btn-xs" href="javascript:void(0)">订单退款处理中</a>
@@ -60,23 +60,12 @@
 									<a class="btn btn-primary btn-xs" href="javascript:void(0)">订单已关闭</a>
 								@else
 									<a class="btn btn-primary btn-xs" href="{{ route('orders.show', ['order' => $order->id]) }}" id="pay">支付订单</a>
-									<a class="btn btn-primary btn-xs" id="cancel">取消订单</a>
 								@endif
 							</div>
 							<div class="col-md-4 col-sm-5 col-xs-12">
 								<div class="buttons-cart">
 									<table>
 										<tbody>
-										  <tr class="cart-subtotal">
-											  <td>
-												  <label>收货人：</label>
-											  </td>
-										  </tr>
-										  <tr class="cart-subtotal">
-											  <td>
-												  <label>收货地址：{{join(' ', $order->address)}}</label>
-											  </td>
-										  </tr>
 										  <tr class="cart-subtotal">
 											  <td>
 												  <label>订单总金额：￥{{$order->total_amount}}</label>
@@ -123,25 +112,6 @@
                         });
                 });
             });
-            $('#sendreview').click(function(){
-                swal({
-                    text: '请输入您的评价',
-                    content: "input",
-                }).then(function (input) {
-                    // 当用户点击 swal 弹出框上的按钮时触发这个函数
-                    if(!input) {
-                        swal('评价不可空', '', 'error');
-                        return;
-                    }
-                    // 请求退款接口
-					axios.post('{{ route('orders.review.store', [$order->id])}}')
-					      .then(function(){
-                                swal('提交评价成功', '', 'success').then(function (){
-                                   location.reload();
-						        });
-						  });
-                });
-			});
             $('#cancel').click(function(){
                 swal("确认取消订单？","取消后将无法支付！","warning")
 					.then(function(){

@@ -18,4 +18,11 @@
  *
  */
 
-Encore\Admin\Form::forget(['map']);
+use Encore\Admin\Form;
+
+Form::forget(['map', 'editor']);
+
+use App\Admin\Extensions\WangEditor;
+
+Form::extend('editor', WangEditor::class);
+

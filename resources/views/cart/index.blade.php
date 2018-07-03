@@ -78,6 +78,7 @@
           </table>
         </div>
         <form class="form-horizontal" role="form" id="order-form">
+          
           <div class="form-group">
             @if(count($addresses)!=0)
             <input type="hidden" name="address" value="{{$addresses[0]->id}}"></input>
@@ -87,6 +88,16 @@
             <div class="col-md-8 col-sm-7 col-xs-12">
               <div class="buttons-cart">
                 <a href="{{route('products.index')}}">继续购物</a>
+                <div class="form-group">
+          <label class="control-label col-sm-3">选择收货地址</label>
+          <div class="col-sm-9 col-md-7">
+            <select class="form-control" name="address">
+              @foreach($addresses as $address)
+                <option value="{{ $address->id }}">{{ $address->full_address }} {{ $address->contact_name }} {{ $address->contact_phone }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
               </div>
               
               <div class="coupon">
@@ -281,7 +292,7 @@ $('.btn-remove').click(function () {
   }
   // 构建请求参数，将用户选择的地址的 id 和备注内容写入请求参数
   var req = {
-  address_id: $('#order-form').find('input[name=address]').val(),
+  address_id: $('#order-form').find('select[name=address]').val(),
   items: [],
   remark: $('#order-form').find('textarea[name=remark]').val(),
   coupon_code: $('input[name=coupon_code]').val(), // 从优惠码输入框中获取优惠码

@@ -38,7 +38,9 @@ class OrdersController extends Controller
     {
         $this->authorize('own', $order);
         $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
-        return view('orders.show', ['order' => $order->load(['items.productSku', 'items.product']),'addresses' => $addresses]);
+        $name = $request->user()->name;
+        $email = $request->user()->email;
+        return view('orders.show', ['order' => $order->load(['items.productSku', 'items.product']),'addresses' => $addresses,'name' => $name,'email'=> $email]);
     }
 
     public function allorders(Request $request)
@@ -48,8 +50,8 @@ class OrdersController extends Controller
             ->where('user_id', $request->user()->id)
             ->orderBy('created_at', 'desc')
             ->paginate();
-        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
-        return view('orders.allorders', ['orders' => $orders,'addresses' => $addresses]);
+        // $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
+        return view('orders.allorders', ['orders' => $orders]);
     }
 
     public function details(Order $order, Request $request)

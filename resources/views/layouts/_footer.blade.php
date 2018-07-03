@@ -67,7 +67,7 @@
 		</div>
 	</div>
 		<!-- footer-bootom-area start -->
-		<div class="footer-bootom-area ptb-15">
+		<!-- <div class="footer-bootom-area ptb-15">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-12">
@@ -82,7 +82,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 <!-- footer-bootom-area end -->
 
 <!--Start of Tawk.to Script-->
