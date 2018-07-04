@@ -28,6 +28,7 @@
         "lokielse/omnipay-unionpay": "v0.2.0",
         "mews/captcha": "^2.2",
         "mews/purifier": "^2.0",
+        "orangehill/iseed": "^2.5",
         "overtrue/laravel-filesystem-qiniu": "^0.0.3",
         "overtrue/laravel-lang": "^3.0",
         "predis/predis": "^1.1",

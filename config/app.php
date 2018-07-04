@@ -174,9 +174,10 @@ return [
         /*
          * Package Service Providers...
          */
-        //验证码
+        // 验证码
         Germey\Geetest\GeetestServiceProvider::class, //滑动验证码
-
+        // 将数据表的数据导出，并生成seeds种子文件
+        Orangehill\Iseed\IseedServiceProvider::class,
 
         /*
          * Application Service Providers...
