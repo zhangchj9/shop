@@ -5,14 +5,14 @@
 	Laravel 是一套简洁、优雅的 PHP Web 开发框架。“可让开发者从面条一般杂乱的代码中解脱出来，使每行代码都可以简洁、富于表达力，构建一个完美的 web APP”。鉴于项目所用的Laravel框架为5.5版本，它要求PHP至少满足7.0及以上版本。对于仍在使用Ubuntu 16.04及以下版本操作系统的用户而言，我们建议对您的操作系统进行更新，否则通过apt将默认安装PHP 5.6，在后续手动安装PHP 7.x版本及配置Composer过程中可能会存在不可预知的麻烦。另外，我们也不建议您在Windows操作系统或应用IIS作为Web服务器对本项目进行配置。 接下来，本文将介绍如何在Ubuntu 18.04逐步搭建本购物网站的运行环境。本项目运行环境依赖一览如下表1所示：
 表1 OnlineShop 运行环境一览
 Dependencies	Details
-OS	Ubuntu 18.04 LTS (GNU/Linux 4.15.0-22-generic x86_64)
-Server	Apache/2.4.29 (Ubuntu)
-PHP version	PHP/7.2.5-0ubuntu0.18.04.1
+OS				Ubuntu 18.04 LTS (GNU/Linux 4.15.0-22-generic x86_64)
+Server			Apache/2.4.29 (Ubuntu)
+PHP version		PHP/7.2.5-0ubuntu0.18.04.1
 Laravel version	5.5.40
 MySQL version	5.7.22-0ubuntu18.04.1
-Timezone	PRC
-Env	local
-Locale	zh-CN
+Timezone		PRC
+Env				local
+Locale			zh-CN
 1. 准备工作（可选）
 	在一切开始前，推荐使用如下指令更新一波服务器的软件及资源包：
 	① sudo apt-get upgrade
